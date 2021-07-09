@@ -5,11 +5,12 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-/*import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';*/
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule, MatTableModule } from '@angular/material';
 import { EventListComponent } from './Components/event-list/event-list.component';
+import { KalendariumApiService } from './Services/kalendarium-api.service';
+import { LoginService } from './Services/login.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { EventListComponent } from './Components/event-list/event-list.component
     ]),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [KalendariumApiService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
