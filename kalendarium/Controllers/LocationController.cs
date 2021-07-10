@@ -13,7 +13,7 @@ namespace kalendarium.Controllers
     public class LocationController : ControllerBase
     {
         [HttpPost("add")]
-        public bool AddLocation (string ccity, string sstate, string sstreet, string zzip)
+        public bool AddLocation ([FromForm] string ccity, [FromForm] string sstate, [FromForm] string sstreet, [FromForm] string zzip)
         {
             DAL.AddLocation(ccity, sstate, sstreet, zzip);
             return true;
