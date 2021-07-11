@@ -9,18 +9,65 @@ export class LoginService {
     this.http = theHttp;
   }
 
-  AddUser() {
+  AddUser(fName, lName, eAddress, dPart, pWord) {
+    let myformdata = new FormData();
+    myformdata.append('fName', fName);
+    myformdata.append('lName', lName);
+    myformdata.append('eAddress', eAddress);
+    myformdata.append('dPart', dPart);
+    myformdata.append('pWord', pWord);
+    this.http.post<any>(`/user/add`, myformdata, {
+
+    }).subscribe(results => {
+      console.log(results);
+    });
   }
 
-  isUser() {
+  isUser(fName, lName, eAddress, dPart, pWord) {
+    let myformdata = new FormData();
+    myformdata.append('fName', fName);
+    myformdata.append('lName', lName);
+    myformdata.append('eAddress', eAddress);
+    myformdata.append('dPart', dPart);
+    myformdata.append('pWord', pWord);
+    this.http.post<any>(`/user/isuser`, myformdata, {
+
+    }).subscribe(results => {
+      console.log(results);
+    });
   }
 
-  getUserByEmail() {
+  getUserByEmail(eAddress, cb) {
+    this.http.get<any>(`/user/getuser/${eAddress}`).subscribe(results => {
+      cb(results);
+    });
   }
 
-  AddCoworker() { }
+  AddCoworker(toHide, thisUser, coworkerID) {
+    let myformdata = new FormData();
+    myformdata.append('toHide', toHide);
+    myformdata.append('thisUser', thisUser);
+    myformdata.append('coworkerID', coworkerID);
+    this.http.post<any>(`/coworker/add`, myformdata, {
 
-  GetCoworkerByUser() { }
+    }).subscribe(results => {
+      console.log(results);
+    });
+  }
 
-  ToggleHide() { }
+  GetCoworkerByUser(thisUser, cb) {
+    this.http.get<any>(`/coworker/getcoworkerbyuser/${thisUser}`).subscribe(results => {
+      cb(results);
+    });
+  }
+
+  ToggleHide(userid, coworkerid) {
+    let myformdata = new FormData();
+    myformdata.append('userid', userid);
+    myformdata.append('coworkerid', coworkerid);
+    this.http.post<any>(`/coworker/toggle`, myformdata, {
+
+    }).subscribe(results => {
+      console.log(results);
+    });}
 }
