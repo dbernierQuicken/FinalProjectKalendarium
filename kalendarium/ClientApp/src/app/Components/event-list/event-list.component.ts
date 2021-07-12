@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { KalendariumApiService } from '../../Services/kalendarium-api.service';
 
 export interface MockData {
   date: string;
@@ -36,6 +37,20 @@ const ELEMENT_DATA: MockData[] = [
 export class EventListComponent {
   displayedColumns: string[] = ['date', 'time', 'eventName', 'location', 'coworker'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
+  events = null;
+  eventslist: KalendariumApiService = null;
+
+  constructor(private eventservice: KalendariumApiService) {
+    this.eventslist = eventservice;
+    this.showevents();
+  }
+
+  showevents() {
+    this.eventslist.getAllPublicEvents(eventresult => {
+      this.events = eventresult;
+      console.log(this.events);
+    });
+  }
 
   public applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
