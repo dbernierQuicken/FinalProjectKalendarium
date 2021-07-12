@@ -46,27 +46,35 @@ export class EventListComponent {
   constructor(private eventservice: KalendariumApiService, private userService: LoginService) {
     this.eventslist = eventservice;
     this.userslist = userService;
-    this.showevents();
-    this.showuser();
- 
+    this.showall();
   }
 
-  showuser() {
-
-    this.userslist.GetAllUsers(userresult => {
-      this.users = userresult;
-      console.log(this.users);
-    });
-
+  ngOnInIt() {
   }
 
-
-  showevents() {
-    this.eventslist.getAllPublicEvents(eventresult => {
+  showall() {
+    this.eventslist.getAllEventsWithLocationAndUser(eventresult => {
       this.events = eventresult;
       console.log(this.events);
     });
   }
+  showuser() {
+    this.userslist.GetAllUsers(userresult => {
+      this.users = userresult;
+      console.log(this.users);
+    });
+    
+
+  }
+
+
+  //showevents() {
+  //  this.eventslist.getAllPublicEvents(eventresult => {
+  //    this.events = eventresult;
+  //    console.log(this.events);
+  //  });
+    
+  //}
 
   public applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

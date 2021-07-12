@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 export class KalendariumApiService {
   http: HttpClient = null;
   allevents = null;
+  alleventsLocUsr = null;
   /*  userName = null;*/
 
   constructor(theHttp: HttpClient) {
@@ -92,6 +93,16 @@ export class KalendariumApiService {
       console.log(result);
       this.allevents = result;
       cb(this.allevents);
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  getAllEventsWithLocationAndUser(cb) {
+    this.http.get<any>('/event/getallwitheventanduser').subscribe(result => {
+      console.log(result);
+      this.alleventsLocUsr = result;
+      cb(this.alleventsLocUsr);
     }, error => {
       console.log(error);
     });
