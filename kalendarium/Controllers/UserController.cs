@@ -13,7 +13,7 @@ namespace kalendarium.Controllers
     public class UserController : ControllerBase
     {
         [HttpPost("add")]
-        public bool AddUser ([FromForm] string fName, [FromForm] string lName, [FromForm] string eAddress, [FromForm] string dPart, [FromForm] string pWord)
+        public bool AddUser([FromForm] string fName, [FromForm] string lName, [FromForm] string eAddress, [FromForm] string dPart, [FromForm] string pWord)
         {
             DAL.AddUser(fName, lName, eAddress, dPart, pWord);
             return true;
@@ -32,6 +32,11 @@ namespace kalendarium.Controllers
             return DAL.GetOneUser(eAddress);
         }
 
+        [HttpGet("getall")]
+        public List<User> GetAllUsers()
+        {
+            return DAL.GetAllUsers();
+        }
 
     }
 }

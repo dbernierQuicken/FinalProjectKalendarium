@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { KalendariumApiService } from '../../Services/kalendarium-api.service';
+import { LoginService } from '../../Services/login.service';
 
 export interface MockData {
   date: string;
@@ -39,11 +40,26 @@ export class EventListComponent {
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   events = null;
   eventslist: KalendariumApiService = null;
+  users = null;
+  userslist: LoginService = null;
 
-  constructor(private eventservice: KalendariumApiService) {
+  constructor(private eventservice: KalendariumApiService, private userService: LoginService) {
     this.eventslist = eventservice;
+    this.userslist = userService;
     this.showevents();
+    this.showuser();
+ 
   }
+
+  showuser() {
+
+    this.userslist.GetAllUsers(userresult => {
+      this.users = userresult;
+      console.log(this.users);
+    });
+
+  }
+
 
   showevents() {
     this.eventslist.getAllPublicEvents(eventresult => {
