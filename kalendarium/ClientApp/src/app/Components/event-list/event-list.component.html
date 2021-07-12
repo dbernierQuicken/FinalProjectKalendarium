@@ -8,7 +8,12 @@
 <table>
   <tbody>
     <tr style="font-weight: bolder">
-      <td>ID</td><td>user ID</td><td>event name</td><td>is it private?</td><td>date</td><td>location ID</td>
+      <td>ID</td>
+      <td>user ID</td>
+      <td>event name</td>
+      <td>is it private?</td>
+      <td>date</td>
+      <td>location ID</td>
     </tr>
     <tr *ngFor="let one of events">
       <td>{{one.id}}</td>
@@ -17,7 +22,19 @@
       <td>{{one.privateEvent}}</td>
       <td>{{one.dt_id | date: 'longDate'}}</td>
       <td>{{one.location_id}}</td>
+
     </tr>
+
+
+    <tr *ngFor="let usr of users">
+      <td>{{usr.id}}</td>
+      <td>{{usr.firstName}}</td>
+
+
+
+    </tr>
+
+
   </tbody>
 </table>
 <br />

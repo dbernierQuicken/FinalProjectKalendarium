@@ -45,9 +45,15 @@ namespace kalendarium.Models
             }
             return false;
         }
-        public static List<User> GetOneUser (string eAddress)
+        public static List<User> GetOneUser(string eAddress)
         {
-            return db.Query<User>("select * from user where emailAddress = @uEAddress", new { uEAddress = eAddress}).ToList();
+            return db.Query<User>("select * from user where emailAddress = @uEAddress", new { uEAddress = eAddress }).ToList();
+        }
+
+
+        public static List<User> GetAllUsers()
+        {
+            return db.GetAll<User>().ToList();
         }
         //-----------------------------------------------------------------------------
         //--------------------COWORKER CRUD-----------------------------------------------
