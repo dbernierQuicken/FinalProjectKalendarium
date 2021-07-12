@@ -15,24 +15,17 @@
       <td>date</td>
       <td>location ID</td>
     </tr>
+
+
     <tr *ngFor="let one of events">
       <td>{{one.id}}</td>
-      <td>{{one.user_id}}</td>
+      <td>{{one.firstName}} {{one.lastName}}</td>
       <td>{{one.name}}</td>
       <td>{{one.privateEvent}}</td>
       <td>{{one.dt_id | date: 'longDate'}}</td>
-      <td>{{one.location_id}}</td>
-
+      <td>{{one.city}}, {{one.state}}</td>
     </tr>
-
-
-    <tr *ngFor="let usr of users">
-      <td>{{usr.id}}</td>
-      <td>{{usr.firstName}}</td>
-
-
-
-    </tr>
+     
 
 
   </tbody>
