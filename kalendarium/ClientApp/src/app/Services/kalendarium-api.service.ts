@@ -11,28 +11,81 @@ export class KalendariumApiService {
     this.http = theHttp;
   }
 
-  MakeNewEvent() {
+  MakeNewEvent(userID, userName, isPrivate, dateID) {
+    let myformdata = new FormData();
+    myformdata.append('userID', userID);
+    myformdata.append('userName', userName);
+    myformdata.append('isPrivate', isPrivate);
+    myformdata.append('dateID', dateID);
+    this.http.post<any>(`/event/addevent`, myformdata, {}).subscribe(results => {
+      console.log(results);
+    });
   }
-  ReadOneEventByID() {
+  ReadOneEventByID(eventId, cb) {
+    this.http.get<any>(`/event/getevent/${eventId}`).subscribe(results => {
+      cb(results);
+
+    });
   }
-  ReadAllPublicEvents() {
+  ReadAllPublicEvents(cb) {
+    this.http.get<any>(`/event`).subscribe(results => {
+      cb(results);
+    });
   }
-  ReadAllCoworkerPublicEvents() {
+  ReadAllCoworkerPublicEvents(coworkerId, cb) {
+    this.http.get<any>(`/event/readcoworker/${coworkerId}`).subscribe(results => {
+      cb(results);
+
+    });
   }
-  ReadAllEventsByUser() {
+  ReadAllEventsByUser(userId, cb) {
+    this.http.get<any>(`/event/readcoworker/${userId}`).subscribe(results => {
+      cb(results);
+
+    });
   }
 
-  AddLocation() {
+  AddLocation(city, state, street, zip) {
+    let myformdata = new FormData();
+    myformdata.append('city', city);
+    myformdata.append('state', state);
+    myformdata.append('street', street);
+    myformdata.append('zip', zip);
+    this.http.post<any>(`/location/add`, myformdata, {
+
+    }).subscribe(results => {
+      console.log(results);
+    });
   }
-  UpdateLocation() {
+  UpdateLocation(Lid, Lcity, Lstate, Lstreet, Lzip) {
+    let myformdata = new FormData();
+    myformdata.append('Lid', Lid);
+    myformdata.append('Lcity', Lcity);
+    myformdata.append('Lstate', Lstate);
+    myformdata.append('Lstreet', Lstreet);
+    myformdata.append('Lzip', Lzip);
+    this.http.put<any>(`/location/update`, myformdata, {
+
+    }).subscribe(results => {
+      console.log(results);
+    });
   }
 
-  DeleteLocation() {
+  DeleteLocation(Lid) {
+    this.http.delete<any>(`/location/remove/${Lid}`, {}).subscribe(results => {
+      console.log(results);
+    });
   }
 
-  GetAllEventsWithLocation() {
+  GetAllEventsWithLocation(cb) {
+    this.http.get<any>('/location/withevent').subscribe(results => {
+      cb(results);
+    });
   }
-  GetTheCalendar() {
+  GetTheCalendar(start, end) {
+    this.http.delete<any>(`/calendar/${start}/${end}`, {}).subscribe(results => {
+      console.log(results);
+    });
   }
   getAllEvents(cb) {
     this.http.get<any>('/events/allevents').subscribe(result => {
