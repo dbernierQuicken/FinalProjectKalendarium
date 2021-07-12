@@ -13,16 +13,7 @@ export interface MockData {
 }
 
 const ELEMENT_DATA: MockData[] = [
-  { date: "01/01/2021", time: "12:00 PM", eventName: "Code Review", location: "New York -- Remote", coworker: "David Bernier" },
-  { date: "01/02/2021", time: "1:00 PM", eventName: "Orientation", location: "Detroit", coworker: "Ricky" },
-  { date: "01/03/2021", time: "5:00 PM", eventName: "Code Review", location: "North Carolina -- Remote", coworker: "Lassiter" },
-  { date: "01/03/2021", time: "12:00 PM", eventName: "Lunch", location: "Remote", coworker: "Michael" },
-  { date: "01/05/2021", time: "8:00 AM", eventName: "Code Review", location: "Detroit", coworker: "Jeff" },
-  { date: "01/06/2021", time: "12:00 PM", eventName: "Hack Week Day 1", location: "Detroit", coworker: "Alaa" },
-  { date: "01/07/2021", time: "9:00 AM", eventName: "Code Review", location: "Detroit", coworker: "Kirk" },
-  { date: "01/08/2021", time: "12:30 PM", eventName: "HR meeting", location: "Detroit", coworker: "Johnathan" },
-  { date: "01/08/2021", time: "3:00 PM", eventName: "Birthday", location: "Detroit", coworker: "Other David" },
-  { date: "01/09/2021", time: "8:00 AM", eventName: "Code Review", location: "Detroit", coworker: "David Bernier" }
+
 ];
 
 /**
@@ -36,10 +27,12 @@ const ELEMENT_DATA: MockData[] = [
 })
 
 export class EventListComponent {
-  displayedColumns: string[] = ['date', 'time', 'eventName', 'location', 'coworker'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns: string[] = ['id', 'name', 'eventName', 'privateEvent', 'date'];
+
   events = null;
   eventslist: KalendariumApiService = null;
+
+  dataSource = new MatTableDataSource(this.events);
   users = null;
   userslist: LoginService = null;
 
@@ -63,22 +56,23 @@ export class EventListComponent {
       this.users = userresult;
       console.log(this.users);
     });
-    
-
   }
-
 
   //showevents() {
   //  this.eventslist.getAllPublicEvents(eventresult => {
   //    this.events = eventresult;
   //    console.log(this.events);
   //  });
-    
+
   //}
 
   public applyFilter(event: Event) {
+    /*    console.log(event.target)
+        console.log(this.eventslist)*/
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource.data.map(e => {
+      console.log(e);
+    })
   }
 
   public EventClick(result: string) {
@@ -87,8 +81,8 @@ export class EventListComponent {
     Eventually will show event Details`)
   }
 
-  public CoworkerClick(result: string) {
-    alert(`Click works for ${result}:
+  public CoworkerClick(firstName: string, lastName: string) {
+    alert(`Click works for ${firstName} ${lastName}:
 
     Eventually will show coworker details`)
   }

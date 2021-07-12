@@ -75,3 +75,17 @@ insert into ints values (0),(1),(2),(3),(4),(5),(6),(7),(8),(9);
 
 insert into Calendar (dt) select date('2020-01-01') + interval a.i*10000 + b.i*1000 + c.i*100 + d.i*10 + e.i day from ints a join ints b join ints c join ints d join ints e where (a.i*10000 + b.i*1000 + c.i*100 + d.i*10 + e.i) <= 11322 order by 1;
 update Calendar set isWeekday = case when dayofweek(dt) in (1,7) then 0 else 1 end, isHoliday = 0, isPayday = 0, y = year(dt), q = quarter(dt), m = month(dt), d = dayofmonth(dt), dw = dayofweek(dt), monthname = monthname(dt), dayname = dayname(dt), w = week(dt), holidayDescr = '';
+
+update calendar set isHoliday = true, holidayDescr = 'test holiday for BS' where dt = '2021-01-24';
+insert into coworker (hide, user_id, coworker_id) value (false, 1, 2);
+insert into coworker (hide, user_id, coworker_id) value (false, 2, 1);
+insert into event (user_id, name, privateEvent, dt_id, location_id) value (1, 'Birthday pary', false, '2021-07-08', 1);
+insert into event (user_id, name, privateEvent, dt_id, location_id) value (3, 'House Warming', false, '2021-07-08', 3);
+insert into location (city, state, street, zip) value ('The Moon', 'Luna', 'NotEarth', 45236);
+insert into location (city, state, street, zip) value ('Charlotte', 'NC', 'Grosbeak', 28269);
+insert into location (city, state, street, zip) value ('Detroit', 'MI', 'Trumbull', 48208);
+insert into User (firstName, lastName, emailAddress, department, password) value ('Terry', 'Sputnik', 'tsputs@ql.com', 'IT', 'password1');
+insert into User (firstName, lastName, emailAddress, department, password) value ('Trobuck', 'Sears', 'neversaydie@ql.com', 'Sales', 'password1');
+insert into User (firstName, lastName, emailAddress, department, password) value ('Uncle', 'Buck', 'bucksforthewin@ql.com', 'hr', 'password1');
+insert into User (firstName, lastName, emailAddress, department, password) value ('davy', 'jones', 'locker@ql.com', 'the ocean', 'password1');
+
