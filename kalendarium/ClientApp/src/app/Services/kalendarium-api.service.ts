@@ -87,8 +87,8 @@ export class KalendariumApiService {
       console.log(results);
     });
   }
-  getAllEvents(cb) {
-    this.http.get<any>('/events/allevents').subscribe(result => {
+  getAllPublicEvents(cb) {
+    this.http.get<any>('/event/public').subscribe(result => {
       console.log(result);
       this.allevents = result;
       cb(this.allevents);
