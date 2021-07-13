@@ -7,6 +7,7 @@ export class KalendariumApiService {
   allevents = null;
   alleventsLocUsr = null;
   oneevent = null;
+  dayevent = null;
   /*  userName = null;*/
 
   constructor(theHttp: HttpClient) {
@@ -118,4 +119,27 @@ export class KalendariumApiService {
       console.log(error);
     });
   }
+
+  getEventsForToday(user_id, cb) {
+    this.http.get<any>(`/event/today/${user_id}`).subscribe(result => {
+      console.log(result);
+      this.dayevent = result;
+      cb(this.dayevent);
+    }, error => {
+      console.log(error);
+    });
+  }
+
+
+  getEventsByDay(date, user_id, cb)
+  {
+    this.http.get<any>(`/event/byday/${date}/${user_id}`).subscribe(result => {
+      console.log(result);
+      this.dayevent = result;
+      cb(this.dayevent);
+    }, error => {
+      console.log(error);
+    });
+  }
+
 }
