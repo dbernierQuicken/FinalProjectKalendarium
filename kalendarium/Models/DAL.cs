@@ -100,10 +100,12 @@ namespace kalendarium.Models
             db.Insert(newEvent);
             return newEvent;
         }
-        public static Event ReadOneEventByID (int eventID)
+        public static Event ReadOneEventByID(int eventID)
         {
             return db.Get<Event>(eventID);
         }
+
+
         public static List<Event> ReadAllPublicEvents()
         {
             
@@ -124,22 +126,31 @@ namespace kalendarium.Models
             return true;
         }
 
-        public static bool DeleteEvent (int eventID)
+        public static bool DeleteEvent(int eventID)
         {
             Event toDelete = new Event() { id = eventID };
             db.Delete<Event>(toDelete);
             return true;
         }
 
+        public static List<JoinCalEventLocationbyDay> EventsByDay(DateTime date, int usrID)
+        {
+            return db.Query<JoinCalEventLocationbyDay>(" SELECT Calendar.*, event.*, location.city, location.state, location.street, location.zip FROM Calendar Left JOIN event ON Calendar.dt=event.dt_id Left join location on event.location_id=location.id WHERE dt = @uDate and user_id = @uid", new { uDate = date, uid = usrID }).ToList();
+        }
+
+
         //-----------------------------------------------------------------------------
         //--------------------CALENDAR CRUD-----------------------------------------------
         //-----------------------------------------------------------------------------
-        
+
         public static List<Calendar> GetMFCalendar(DateTime start, DateTime end)
         {
             return db.Query<Calendar>("select * from calendar where dt >= @uStart and dt <= @uEnd", new { uStart = start, uEnd = end }).ToList();
         }
 
+      
+
+       
 
         //-----------------------------------------------------------------------------
         //--------------------LOCATION CRUD-----------------------------------------------

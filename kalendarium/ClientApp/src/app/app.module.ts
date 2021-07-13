@@ -69,7 +69,7 @@ import { NewEventFormComponent } from './Components/new-event-form/new-event-for
       { path: 'coworkers/getallcoworkers', component: FriendsListComponent },
       { path: 'user/login', component: LoginComponent },
       { path: 'user/sign-up', component: SignUpComponent },
-
+      { path: 'user/usershowday', component: DayComponent },
       { path: '**', component: PageNotFoundComponent },
 
     ]),

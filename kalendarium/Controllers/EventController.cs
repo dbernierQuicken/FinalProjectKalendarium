@@ -40,6 +40,19 @@ namespace kalendarium.Controllers
             return DAL.ReadAllCoworkerPublicEvents(coworkerID).ToList();
         }
 
+        [HttpGet("byday/{date}/{user_id}")]
+        public List<JoinCalEventLocationbyDay> EventsByDay(DateTime date, int user_id)
+        {
+            return DAL.EventsByDay(date, user_id).ToList();
+        }
+
+        [HttpGet("today/{user_id}")]
+        public List<JoinCalEventLocationbyDay> EventsForToday(int user_id)
+        {
+            DateTime date = DateTime.Now;
+            return DAL.EventsByDay(date, user_id).ToList();
+        }
+
 
         [HttpGet("byuser")]
         public  List<Event> ReadAllEventsByUser(int userID)
