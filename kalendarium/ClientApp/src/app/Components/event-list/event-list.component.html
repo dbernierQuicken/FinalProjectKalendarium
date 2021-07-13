@@ -30,7 +30,7 @@
   <ng-container matColumnDef="eventName">
     <th mat-header-cell *matHeaderCellDef> Event</th>
     <td mat-cell *matCellDef="let element">
-      <button class="event-name-button" (click)="EventClick(element.name)">{{element.name}}</button>
+      <button class="event-name-button" (click)="EventClick(element.id)">{{element.name}}</button>
     </td>
   </ng-container>
 

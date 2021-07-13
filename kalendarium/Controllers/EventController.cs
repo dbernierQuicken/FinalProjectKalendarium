@@ -69,6 +69,13 @@ namespace kalendarium.Controllers
             return DAL.GetAllEventsWithLocationAndUser();
         }
 
+        [HttpGet("GetOneEventDetail/{eventID}")]
+        public List<JoinEventUserLocation> GetOneEventsWithLocationAndUser(int eventID)
+        {
+            return DAL.GetOneEventsWithLocationAndUser(eventID);
+        }
+
+
     }
 }
 

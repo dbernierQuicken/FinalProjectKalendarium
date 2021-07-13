@@ -6,6 +6,7 @@ export class KalendariumApiService {
   http: HttpClient = null;
   allevents = null;
   alleventsLocUsr = null;
+  oneevent = null;
   /*  userName = null;*/
 
   constructor(theHttp: HttpClient) {
@@ -103,6 +104,16 @@ export class KalendariumApiService {
       console.log(result);
       this.alleventsLocUsr = result;
       cb(this.alleventsLocUsr);
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  getOneEventWithLocationAndUser(id, cb) {
+    this.http.get<any>(`/event/GetOneEventDetail/${id}`).subscribe(result => {
+      console.log(result);
+      this.oneevent = result;
+      cb(this.oneevent);
     }, error => {
       console.log(error);
     });

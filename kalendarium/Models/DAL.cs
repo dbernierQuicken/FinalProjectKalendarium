@@ -178,6 +178,13 @@ namespace kalendarium.Models
         {
             return db.Query<JoinEventUserLocation>("SELECT event.*, location.city, location.state, location.street, location.zip, user.firstName, user.lastName, user.emailAddress FROM event Left JOIN location ON event.location_id=location.id Left join user on event.user_id=user.id").ToList();
         }
+
+        public static List<JoinEventUserLocation> GetOneEventsWithLocationAndUser(int eventID)
+        {
+            return db.Query<JoinEventUserLocation>("SELECT event.*, location.city, location.state, location.street, location.zip, user.firstName, user.lastName, user.emailAddress FROM event Left JOIN location ON event.location_id=location.id Left join user on event.user_id=user.id where event.id = @eventid", new { eventid = eventID }).ToList();
+        }
+
+
     }
 
 }
