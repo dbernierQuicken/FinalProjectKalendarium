@@ -8,10 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contact-card.component.css']
 })
 export class ContactCardComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

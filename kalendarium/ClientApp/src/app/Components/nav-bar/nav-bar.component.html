@@ -3,18 +3,28 @@
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item>
-      <mat-icon>view_list</mat-icon>
-      <span>Event List </span>
-    </button>
-    <button mat-menu-item>
-      <mat-icon>group</mat-icon>
-      <span>Coworkers</span>
-    </button>
-    <button mat-menu-item>
-      <mat-icon>event</mat-icon>
-      <span>Calendar</span>
-    </button>
+
+    <a routerLink="/events/getallevents">
+      <button mat-menu-item>
+        <mat-icon>view_list</mat-icon>
+        <span>Event List </span>
+      </button>
+    </a>
+
+    <a routerLink="/coworkers/getallcoworkers">
+      <button mat-menu-item>
+        <mat-icon>group</mat-icon>
+        <span>Coworkers</span>
+      </button>
+    </a>
+
+    <!--Eventually add Calendar Component -->
+    <a routerLink="">
+      <button mat-menu-item>
+        <mat-icon>event</mat-icon>
+        <span>Calendar</span>
+      </button>
+    </a>
   </mat-menu>
   <span>  Kalendarium</span>
   <span class="example-spacer"></span>

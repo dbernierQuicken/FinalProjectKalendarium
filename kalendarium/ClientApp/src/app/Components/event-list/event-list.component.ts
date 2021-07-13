@@ -1,3 +1,4 @@
+import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -32,7 +33,7 @@ export class EventListComponent {
   events = null;
   eventslist: KalendariumApiService = null;
 
-  dataSource = new MatTableDataSource(this.events);
+  dataSource = new MatTableDataSource();
   users = null;
   userslist: LoginService = null;
 
@@ -48,13 +49,13 @@ export class EventListComponent {
   showall() {
     this.eventslist.getAllEventsWithLocationAndUser(eventresult => {
       this.events = eventresult;
-      console.log(this.events);
+      /*   console.log(this.events);*/
     });
   }
   showuser() {
     this.userslist.GetAllUsers(userresult => {
       this.users = userresult;
-      console.log(this.users);
+      /*    console.log(this.users);*/
     });
   }
 
@@ -67,12 +68,8 @@ export class EventListComponent {
   //}
 
   public applyFilter(event: Event) {
-    /*    console.log(event.target)
-        console.log(this.eventslist)*/
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.data.map(e => {
-      console.log(e);
-    })
+    this.events.filter = filterValue.trim().toLowerCase();
   }
 
   public EventClick(result: string) {
@@ -82,8 +79,8 @@ export class EventListComponent {
   }
 
   public CoworkerClick(firstName: string, lastName: string) {
-    alert(`Click works for ${firstName} ${lastName}:
+    /*    alert(`Click works for ${firstName} ${lastName}:
 
-    Eventually will show coworker details`)
+        Eventually will show coworker details`)*/
   }
 }

@@ -10,4 +10,8 @@ export class AccountButtonComponent {
   /** HomeButton ctor */
   constructor() {
   }
+
+  OnLogOut() {
+    alert("Logout")
+  }
 }
