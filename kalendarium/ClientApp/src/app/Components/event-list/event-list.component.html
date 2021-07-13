@@ -3,6 +3,7 @@
 <ng-container appearance="standard">
   <input matInput (keyup)="applyFilter($event)" placeholder="Filter Events Table" #input>
 </ng-container>
+
 <br />
 <br />
 <br />
@@ -62,3 +63,8 @@
     <td class="mat-cell" colspan="4">No data matching for:  "{{input.value}}"</td>
   </tr>
 </table>
+
+<br />
+<br />
+
+<button routerLink="/events/addEvent"> Add Event</button>

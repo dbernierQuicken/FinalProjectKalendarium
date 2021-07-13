@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatPaginatorModule, MatSliderModule, MatTableModule, MatToolbarModule } from '@angular/material';
+import { MatCardModule, MatCheckboxModule, MatDatepicker, MatDatepickerModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatSliderModule, MatTableModule, MatToolbarModule } from '@angular/material';
 import { EventListComponent } from './Components/event-list/event-list.component';
 import { KalendariumApiService } from './Services/kalendarium-api.service';
 import { LoginService } from './Services/login.service';
@@ -22,6 +22,7 @@ import { AccountButtonComponent } from './Components/account-button/account-butt
 import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { LoginComponent } from './Components/login/login.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
+import { NewEventFormComponent } from './Components/new-event-form/new-event-form.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { PageNotFoundComponent } from './Components/page-not-found/page-not-foun
     AccountButtonComponent,
     SignUpComponent,
     LoginComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    NewEventFormComponent
 
   ],
   imports: [
@@ -57,13 +59,17 @@ import { PageNotFoundComponent } from './Components/page-not-found/page-not-foun
     MatMenuModule,
     MatDialogModule,
     MatInputModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
     RouterModule.forRoot([
       { path: '', component: EventListComponent },
 
       { path: 'events/getallevents', component: EventListComponent },
+      { path: 'events/addEvent', component: NewEventFormComponent },
       { path: 'coworkers/getallcoworkers', component: FriendsListComponent },
       { path: 'user/login', component: LoginComponent },
       { path: 'user/sign-up', component: SignUpComponent },
+
       { path: '**', component: PageNotFoundComponent },
 
     ]),
