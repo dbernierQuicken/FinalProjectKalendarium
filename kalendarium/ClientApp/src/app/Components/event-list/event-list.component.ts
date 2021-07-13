@@ -28,7 +28,7 @@ const ELEMENT_DATA: MockData[] = [
 })
 
 export class EventListComponent {
-  displayedColumns: string[] = ['id', 'name', 'eventName', 'privateEvent', 'date'];
+  displayedColumns: string[] = ['id', 'name', 'eventName', 'privateEvent', 'date',];
 
   events = null;
   eventslist: KalendariumApiService = null;
@@ -41,6 +41,7 @@ export class EventListComponent {
     this.eventslist = eventservice;
     this.userslist = userService;
     this.showall();
+
   }
 
   ngOnInIt() {
@@ -72,11 +73,13 @@ export class EventListComponent {
     this.events.filter = filterValue.trim().toLowerCase();
   }
 
-  public EventClick(result: string) {
-    alert(`Click works for ${result}:
-
-    Eventually will show event Details`)
+  public EventClick(id) {
+    this.eventslist.getOneEventWithLocationAndUser(id, result => {
+      console.log(result);
+    });
   }
+
+
 
   public CoworkerClick(firstName: string, lastName: string) {
     /*    alert(`Click works for ${firstName} ${lastName}:
