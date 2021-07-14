@@ -8,7 +8,10 @@ import { LoginService } from '../../Services/login.service';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private logService: LoginService) { }
+
+  constructor(private logService: LoginService) {
+
+  }
 
   ngOnInit(): void {
   }
