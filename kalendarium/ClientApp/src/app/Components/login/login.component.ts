@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from '../../Services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -8,10 +10,26 @@ import { Component } from '@angular/core';
 /** login component*/
 export class LoginComponent {
   /** login ctor */
-  constructor() {
+  emailaddress: string = '';
+  password: string = '';
+
+  constructor(private logService: LoginService, private route: Router) {
   }
 
   OnSubmit() {
-    alert("Submit")
+    this.logService.getUserByEmail(this.emailaddress, userresult => {
+      this.logService.userresult = userresult;
+      console.log(this.logService.userresult);
+      if (this.logService.userresult[0] != null) {
+
+        if (this.password == this.logService.userresult[0].password) {
+          this.logService.currentuser = this.logService.userresult[0];
+          console.log(this.logService.currentuser.firstName);
+      }
+      else {
+        console.log('fuck you');
+      }
+    }
+    });
   }
 }
