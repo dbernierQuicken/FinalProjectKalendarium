@@ -19,11 +19,13 @@ html, body {
   height: 100%;
   margin: 1rem;
   padding: 0rem;
+
 }
 
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color:  rgba(251, 250, 245);
 }
 
 /*button {

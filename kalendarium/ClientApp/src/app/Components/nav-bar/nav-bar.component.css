@@ -1,3 +1,12 @@
 .example-spacer {
   flex: 1 1 auto;
 }
+
+.tool-bar{
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+.expand-menu{
+  background-color:  rgba(251, 250, 245);
+}

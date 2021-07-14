@@ -1,8 +1,8 @@
-<mat-toolbar>
+<mat-toolbar class="tool-bar">
   <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon>menu</mat-icon>
   </button>
-  <mat-menu #menu="matMenu">
+  <mat-menu #menu="matMenu" class="expand-menu">
 
     <a routerLink="/events/getallevents">
       <button mat-menu-item>
@@ -21,7 +21,7 @@
     <!--Day Comp  -->
     <a routerLink="/user/usershowday">
       <button mat-menu-item>
-        <mat-icon>group</mat-icon>
+        <mat-icon>calendar_today</mat-icon>
         <span>Today</span>
       </button>
     </a>
@@ -37,7 +37,7 @@
   <span> &nbsp;&nbsp; Kalendarium</span>
   <span class="example-spacer"></span>
 
- 
+
 
   <app-account-button></app-account-button>
   <div>
