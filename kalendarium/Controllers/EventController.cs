@@ -41,7 +41,7 @@ namespace kalendarium.Controllers
         }
 
         [HttpGet("byday/{date}/{user_id}")]
-        public List<JoinCalEventLocationbyDay> EventsByDay(DateTime date, int user_id)
+        public List<JoinCalEventLocationbyDay> EventsByDay(string date, int user_id)
         {
             return DAL.EventsByDay(date, user_id).ToList();
         }
@@ -49,7 +49,7 @@ namespace kalendarium.Controllers
         [HttpGet("today/{user_id}")]
         public List<JoinCalEventLocationbyDay> EventsForToday(int user_id)
         {
-            DateTime date = DateTime.Now;
+            string date = DateTime.Now.ToString("yyyy-MM-dd");
             return DAL.EventsByDay(date, user_id).ToList();
         }
 
