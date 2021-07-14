@@ -1,22 +1,7 @@
+import { LoginService } from './../../Services/login.service';
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-
-export interface MockData {
-  coworker: string;
-  department: string;
-  location: string;
-  hideEvent: boolean;
-}
-
-const ELEMENT_DATA: MockData[] = [
-  { coworker: "David Bernier", department: "Engineering", location: "Remote -- NYC", hideEvent: false },
-  { coworker: "John", department: "Engineering", location: "Remote -- Det", hideEvent: false },
-  { coworker: "Mary", department: "dep1", location: "Remote -- LA", hideEvent: false },
-  { coworker: "Tim", department: "dep2", location: "DET", hideEvent: false },
-  { coworker: "Eric", department: "dep3", location: "SF", hideEvent: false },
-
-];
 
 /**
  * @title Table with filtering
@@ -28,7 +13,15 @@ const ELEMENT_DATA: MockData[] = [
 })
 export class FriendsListComponent {
   displayedColumns: string[] = ['coworker', 'department', 'location', 'hideEvent'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = null;
+  userList;
+
+
+constructor(private userService: LoginService){
+  this.userService.GetAllUsers( res =>{
+    this.dataSource = new MatTableDataSource(res) ;
+  })
+}
 
   public applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
