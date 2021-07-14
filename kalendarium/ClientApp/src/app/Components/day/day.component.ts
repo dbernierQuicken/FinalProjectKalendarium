@@ -43,7 +43,7 @@ export class DayComponent implements OnInit {
 
   showtoday() {
     /*   NOTWORKING */
-    this.eventslist.getEventsForToday(2, eventresult => {
+    this.eventslist.getEventsForToday(this.userslist.currentuser.id, eventresult => {
       this.events = eventresult;
      console.log(this.events);
     });
