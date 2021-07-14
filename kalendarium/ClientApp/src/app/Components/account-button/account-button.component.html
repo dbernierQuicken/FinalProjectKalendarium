@@ -1,3 +1,7 @@
+<ng-container *ngIf="this.logService.currentuser">
+  <span>{{this.logService.currentuser.firstName}} {{this.logService.currentuser.lastName}} &nbsp;&nbsp;</span>
+</ng-container>
+
 <button mat-icon-button [matMenuTriggerFor]="menu">
   <mat-icon>account_circle</mat-icon>
 </button>
