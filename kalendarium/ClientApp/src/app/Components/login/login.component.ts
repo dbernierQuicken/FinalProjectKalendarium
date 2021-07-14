@@ -25,9 +25,11 @@ export class LoginComponent {
         if (this.password == this.logService.userresult[0].password) {
           this.logService.currentuser = this.logService.userresult[0];
           console.log(this.logService.currentuser.firstName);
+          this.route.navigateByUrl('/user/usershowday');
       }
       else {
-        console.log('fuck you');
+          //DO THIS PART
+          alert('Wrong Credentials. Try again.')
       }
     }
     });

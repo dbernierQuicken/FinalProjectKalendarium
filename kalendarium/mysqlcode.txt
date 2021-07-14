@@ -8,7 +8,7 @@ CREATE TABLE `User` (
 `id` INT NOT NULL AUTO_INCREMENT,
 `firstName` varchar(255),
 `lastName` varchar(255),
-`emailAddress` varchar(255) NOT NULL,
+`emailAddress` varchar(255) NOT NULL unique,
 `department` varchar(255) NOT NULL,
 `password` varchar(255) not null,
 PRIMARY KEY (`id`)
@@ -74,12 +74,32 @@ insert into ints values (0),(1),(2),(3),(4),(5),(6),(7),(8),(9);
 
 
 insert into Calendar (dt) select date('2020-01-01') + interval a.i*10000 + b.i*1000 + c.i*100 + d.i*10 + e.i day from ints a join ints b join ints c join ints d join ints e where (a.i*10000 + b.i*1000 + c.i*100 + d.i*10 + e.i) <= 11322 order by 1;
-update Calendar set isWeekday = case when dayofweek(dt) in (1,7) then 0 else 1 end, isHoliday = 0, isPayday = 0, y = year(dt), q = quarter(dt), m = month(dt), d = dayofmonth(dt), dw = dayofweek(dt), monthname = monthname(dt), dayname = dayname(dt), w = week(dt), holidayDescr = '';
+update Calendar set isWeekday = case when dayofweek(dt) in (1,7) then 0 else 1 end, isHoliday = 0, isPayday = 0, y = year(dt), q = quarter(dt), m = month(dt), d = dayofmonth(dt), dw = dayofweek(dt), monthname = monthname(dt), dayname = dayname(dt), w = week(dt), holidayDescr = '';update Calendar set isHoliday = true where dt = '2021-01-24';
+update Calendar set isHoliday = true, holidayDescr = 'test holiday for BS' where dt = '2021-01-24';
+
+
+select * from kalendarium.calendar;
+
+select * from user;
+select * from event;
+select * from user where emailAddress = 'bsmorg@dude.com';
+select * from coworker;
+select * from coworker where user_id = 1;
+select * from calendar;
+select * from location;
+select * from calendar where monthName = 'January' and dayName = 'Thursday';
+select * from calendar where dt >= '2021-07-05' and dt <= '2021-07-09';
+SELECT * FROM calendar JOIN Event ON calendar.dt=Event.dt_id;
+select * from Event where privateEvent = false;
+SELECT event.*, location.city, location.state, location.street, location.zip FROM event Left JOIN location ON event.location_id=location.id;
+SELECT event.*, location.city, location.state, location.street, location.zip, user.firstName, user.lastName, user.emailAddress FROM event Left JOIN location ON event.location_id=location.id Left join user on event.user_id=user.id;
+select Calendar.*, event.*, location.city, location.state, location.street, location.zip FROM Calendar  Left JOIN event ON Calendar.dt=event.dt_id Left join location on event.location_id=location.id WHERE dt='2021-07-14' and user_id = 2;
+
 
 update calendar set isHoliday = true, holidayDescr = 'test holiday for BS' where dt = '2021-01-24';
 insert into coworker (hide, user_id, coworker_id) value (false, 1, 2);
 insert into coworker (hide, user_id, coworker_id) value (false, 2, 1);
-insert into event (user_id, name, privateEvent, dt_id, location_id) value (1, 'Birthday pary', false, '2021-07-08', 1);
+insert into event (user_id, name, privateEvent, dt_id, location_id) value (1, 'Birthday pary', false, '2021-07-14', 1);
 insert into event (user_id, name, privateEvent, dt_id, location_id) value (3, 'House Warming', false, '2021-07-08', 3);
 insert into location (city, state, street, zip) value ('The Moon', 'Luna', 'NotEarth', 45236);
 insert into location (city, state, street, zip) value ('Charlotte', 'NC', 'Grosbeak', 28269);
