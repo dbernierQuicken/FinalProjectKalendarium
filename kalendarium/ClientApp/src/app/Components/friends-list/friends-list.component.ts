@@ -3,9 +3,6 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
-/**
- * @title Table with filtering
- */
 @Component({
   selector: 'app-friends-list',
   templateUrl: './friends-list.component.html',
@@ -13,9 +10,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class FriendsListComponent {
   displayedColumns: string[] = ['coworker', 'department', 'location', 'hideEvent'];
-  dataSource = null;
-  userList;
-
+  dataSource;
 
 constructor(private userService: LoginService){
   this.userService.GetAllUsers( res =>{
@@ -40,9 +35,3 @@ constructor(private userService: LoginService){
     Eventually will show coworker details`)
   }
 }
-
-/*@Component({
-  selector: 'app-friends-list',
-  templateUrl: './friends-list.component.html',
-  styleUrls: ['./friends-list.component.css']
-})*/
