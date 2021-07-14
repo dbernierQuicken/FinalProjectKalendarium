@@ -7,6 +7,7 @@ import { User } from 'oidc-client';
 export class LoginService {
   http: HttpClient = null;
   currentuser = null;
+  userresult = null;
 
   isuser: boolean = null;
 
@@ -43,9 +44,12 @@ export class LoginService {
       this.isuser = results;
     });
   } getUserByEmail(eAddress, cb) {
-    this.http.get<any>(`/user/getuser/${eAddress}`).subscribe(results => {
-      this.currentuser = results;
-      cb(results);
+    this.http.get<any>(`/user/getuser/${eAddress}`).subscribe(async results => {
+      await cb(results);
+      this.userresult = await results;
+      if (this.userresult == null) {
+        console.log('help me Im null');
+      }
     });
   } AddCoworker(toHide, thisUser, coworkerID) {
     let myformdata = new FormData();
