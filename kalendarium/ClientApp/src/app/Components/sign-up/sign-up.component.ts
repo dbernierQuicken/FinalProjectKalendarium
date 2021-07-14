@@ -14,8 +14,14 @@ export class SignUpComponent {
   password: string = '';
   dept: string = '';
   firstname: string = '';
-  lastname: string = ''; constructor(private logService: LoginService, private route: Router) {
-  } OnSubmit() {
+  lastname: string = '';
+  currentuser = null;
+
+  constructor(private logService: LoginService, private route: Router) {
+
+  }
+
+  OnSubmit() {
     console.log(this.emailaddress, this.password, this.dept, this.firstname, this.lastname);
     //this.logService.isUser(this.firstname, this.lastname, this.emailaddress, this.dept, this.password);
     //console.log('Check over here: ', this.logService.isuser);
@@ -28,8 +34,16 @@ export class SignUpComponent {
     // this.route.navigateByUrl('');
     //}
     this.logService.AddUser(this.firstname, this.lastname, this.emailaddress, this.dept, this.password);
-    this.route.navigateByUrl('/events/getallevents');
+    this.logService.getUserByEmail(this.emailaddress, userresult => {
+      //this.currentuser = userresult;
+    });
+    
     //this.logService.username = this.emailaddress; }
+    //console.log(this.currentuser);
+    //this.logService.currentuser = this.currentuser;
+    
+    console.log('hey check this shit out', this.logService.currentuser);
+    this.route.navigateByUrl('/events/getallevents');
   }
 
 }
