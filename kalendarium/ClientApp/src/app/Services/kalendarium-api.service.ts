@@ -27,7 +27,6 @@ export class KalendariumApiService {
   ReadOneEventByID(eventId, cb) {
     this.http.get<any>(`/event/getevent/${eventId}`).subscribe(results => {
       cb(results);
-
     });
   }
   ReadAllPublicEvents(cb) {
@@ -38,13 +37,11 @@ export class KalendariumApiService {
   ReadAllCoworkerPublicEvents(coworkerId, cb) {
     this.http.get<any>(`/event/readcoworker/${coworkerId}`).subscribe(results => {
       cb(results);
-
     });
   }
   ReadAllEventsByUser(userId, cb) {
     this.http.get<any>(`/event/readcoworker/${userId}`).subscribe(results => {
       cb(results);
-
     });
   }
 
@@ -55,7 +52,6 @@ export class KalendariumApiService {
     myformdata.append('street', street);
     myformdata.append('zip', zip);
     this.http.post<any>(`/location/add`, myformdata, {
-
     }).subscribe(results => {
       console.log(results);
     });
@@ -68,7 +64,6 @@ export class KalendariumApiService {
     myformdata.append('Lstreet', Lstreet);
     myformdata.append('Lzip', Lzip);
     this.http.put<any>(`/location/update`, myformdata, {
-
     }).subscribe(results => {
       console.log(results);
     });
@@ -85,9 +80,9 @@ export class KalendariumApiService {
       cb(results);
     });
   }
-  GetTheCalendar(start, end) {
-    this.http.delete<any>(`/calendar/${start}/${end}`, {}).subscribe(results => {
-      console.log(results);
+  GetTheCalendar(cb) {
+    this.http.get<any>(`/calendar/fetchCal`, {}).subscribe(results => {
+      cb(results);
     });
   }
   getAllPublicEvents(cb) {
@@ -130,9 +125,7 @@ export class KalendariumApiService {
     });
   }
 
-
-  getEventsByDay(date, user_id, cb)
-  {
+  getEventsByDay(date, user_id, cb) {
     this.http.get<any>(`/event/byday/${date}/${user_id}`).subscribe(result => {
       console.log(result);
       this.dayevent = result;
@@ -141,5 +134,4 @@ export class KalendariumApiService {
       console.log(error);
     });
   }
-
 }
