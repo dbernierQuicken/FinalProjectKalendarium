@@ -133,9 +133,10 @@ namespace kalendarium.Models
             return true;
         }
 
-        public static List<JoinCalEventLocationbyDay> EventsByDay(DateTime date, int usrID)
+        public static List<JoinCalEventLocationbyDay> EventsByDay(string date, int usrID)
         {
-            return db.Query<JoinCalEventLocationbyDay>(" SELECT Calendar.*, event.*, location.city, location.state, location.street, location.zip FROM Calendar Left JOIN event ON Calendar.dt=event.dt_id Left join location on event.location_id=location.id WHERE dt = @uDate and user_id = @uid", new { uDate = date, uid = usrID }).ToList();
+            return db.Query<JoinCalEventLocationbyDay>(" SELECT Calendar.*, event.*, location.city, location.state, location.street, location.zip FROM Calendar" +
+                " Left JOIN event ON Calendar.dt=event.dt_id Left join location on event.location_id=location.id WHERE dt = @uDate and user_id = @uid", new { uDate = date, uid = usrID }).ToList();
         }
 
 

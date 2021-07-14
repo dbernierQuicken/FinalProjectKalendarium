@@ -12,7 +12,8 @@ import { LoginService } from '../../Services/login.service';
 })
 export class DayComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'eventName', 'privateEvent', 'date'];
+  displayedColumns: string[] = ['id','eventName', 'privateEvent', 'date', 'location'];
+ 
   events = null;
   eventslist: KalendariumApiService = null;
 
@@ -23,7 +24,7 @@ export class DayComponent implements OnInit {
   constructor(private eventservice: KalendariumApiService, private userService: LoginService) {
     this.eventslist = eventservice;
     this.userslist = userService;
-    this.showall();
+    this.showtoday();
   }
 
 
@@ -40,12 +41,13 @@ export class DayComponent implements OnInit {
     });
   }
 
-  /* THIS ISNT WORKING ----  showtoday() {
-    this.eventslist.getEventsForToday(this.userslist.)(eventresult => {
+  showtoday() {
+    /*   NOTWORKING */
+    this.eventslist.getEventsForToday(2, eventresult => {
       this.events = eventresult;
-      /*   console.log(this.events);
+     console.log(this.events);
     });
-  }*/
+  }
 
 
   showuser() {
