@@ -8,29 +8,28 @@ using Dapper.Contrib.Extensions;
 
 namespace kalendarium.Models
 {
-
     public class DAL
     {
         static public IDbConnection db;
 
         // Department methods
-        // C - Add Event 
-        // R: Read All, Read one by ID 
-        // U -- Update Location / Event ID? 
+        // C - Add Event
+        // R: Read All, Read one by ID
+        // U -- Update Location / Event ID?
         // D -- Delete
 
         //-----------------------------------------------------------------------------
         //--------------------USER CRUD-----------------------------------------------
         //-----------------------------------------------------------------------------
 
-        public static User AddUser (string fName, string lName, string eAddress, string dPArt, string pWord)
+        public static User AddUser(string fName, string lName, string eAddress, string dPArt, string pWord)
         {
             User newuser = new User() { firstName = fName, lastName = lName, emailAddress = eAddress, department = dPArt, password = pWord };
             db.Insert(newuser);
             return newuser;
         }
 
-        public static bool  isUser(User usr)
+        public static bool isUser(User usr)
         {
             List<User> userlist = new List<User>();
 
@@ -45,35 +44,36 @@ namespace kalendarium.Models
             }
             return false;
         }
+
         public static List<User> GetOneUser(string eAddress)
         {
             return db.Query<User>("select * from user where emailAddress = @uEAddress", new { uEAddress = eAddress }).ToList();
         }
 
-
         public static List<User> GetAllUsers()
         {
             return db.GetAll<User>().ToList();
         }
+
         //-----------------------------------------------------------------------------
         //--------------------COWORKER CRUD-----------------------------------------------
         //-----------------------------------------------------------------------------
         public static Coworker AddCoworker(bool toHide, int thisUser, int coworkerID)
         {
-            Coworker newCW = new Coworker() { hide = toHide, user_id = thisUser, coworker_id = coworkerID};
+            Coworker newCW = new Coworker() { hide = toHide, user_id = thisUser, coworker_id = coworkerID };
             db.Insert(newCW);
             return newCW;
         }
 
-        public static List<Coworker> GetCoworkerByUser (int thisUser)
+        public static List<Coworker> GetCoworkerByUser(int thisUser)
         {
             return db.Query<Coworker>("select * from coworker where user_id = @uTheUser", new { uTheUser = thisUser }).ToList();
         }
 
-        public static bool ToggleHide (int thisUser, int thisCoworker)
+        public static bool ToggleHide(int thisUser, int thisCoworker)
         {
             List<Coworker> result = db.Query<Coworker>("select * from coworker where user_id = @uTheUser and coworker_id = @uTheCoworker",
-                new { uTheUser = thisUser, uTheCoworker = thisCoworker}).ToList();
+                new { uTheUser = thisUser, uTheCoworker = thisCoworker }).ToList();
 
             foreach (Coworker cur in result)
             {
@@ -88,39 +88,39 @@ namespace kalendarium.Models
                 db.Update(cur);
             }
             return true;
-
         }
 
         //-----------------------------------------------------------------------------
         //--------------------EVENT CRUD-----------------------------------------------
         //-----------------------------------------------------------------------------
-        public static Event MakeNewEvent (int thisUser, string userName, bool privateParty, DateTime dateID)
+        public static Event MakeNewEvent(int thisUser, string userName, bool privateParty, DateTime dateID)
         {
             Event newEvent = new Event() { user_id = thisUser, name = userName, privateEvent = privateParty, dt_id = dateID };
             db.Insert(newEvent);
             return newEvent;
         }
+
         public static Event ReadOneEventByID(int eventID)
         {
             return db.Get<Event>(eventID);
         }
 
-
         public static List<Event> ReadAllPublicEvents()
         {
-            
             return db.Query<Event>("select * from Event where privateEvent = false").ToList();
         }
+
         public static List<Event> ReadAllCoworkerPublicEvents(int coworkerID)
         {
             return db.Query<Event>("select * from Event where privateEvent = false and user_id = @uCWID", new { uCWID = coworkerID }).ToList();
         }
-        public static List<Event> ReadAllEventsByUser (int userID)
+
+        public static List<Event> ReadAllEventsByUser(int userID)
         {
             return db.Query<Event>("select * from Event where user_id = @user", new { user = userID }).ToList();
         }
-        
-        public static bool UpdateEvent (Event toUpdate)
+
+        public static bool UpdateEvent(Event toUpdate)
         {
             db.Update<Event>(toUpdate);
             return true;
@@ -139,19 +139,19 @@ namespace kalendarium.Models
                 " Left JOIN event ON Calendar.dt=event.dt_id Left join location on event.location_id=location.id WHERE dt = @uDate and user_id = @uid", new { uDate = date, uid = usrID }).ToList();
         }
 
-
         //-----------------------------------------------------------------------------
         //--------------------CALENDAR CRUD-----------------------------------------------
         //-----------------------------------------------------------------------------
 
-        public static List<Calendar> GetMFCalendar(DateTime start, DateTime end)
+        /*        public static List<Calendar> GetMFCalendar(DateTime start, DateTime end)
         {
             return db.Query<Calendar>("select * from calendar where dt >= @uStart and dt <= @uEnd", new { uStart = start, uEnd = end }).ToList();
+        }*/
+
+        public static List<Calendar> GetMFCalendar()
+        {
+            return db.Query<Calendar>("select * from calendar where y = 2021").ToList();
         }
-
-      
-
-       
 
         //-----------------------------------------------------------------------------
         //--------------------LOCATION CRUD-----------------------------------------------
@@ -164,7 +164,7 @@ namespace kalendarium.Models
 
         public static Location AddLocation(string ccity, string sstate, string sstreet, string zzip)
         {
-            Location aLocation = new Location() { city = ccity, state = sstate, street = sstreet, zip = zzip};
+            Location aLocation = new Location() { city = ccity, state = sstate, street = sstreet, zip = zzip };
             db.Insert(aLocation);
             return aLocation;
         }
@@ -186,6 +186,7 @@ namespace kalendarium.Models
             db.Delete(aLocation);
             return true;
         }
+
         public static List<JoinEventUserLocation> GetAllEventsWithLocationAndUser()
         {
             return db.Query<JoinEventUserLocation>("SELECT event.*, location.city, location.state, location.street, location.zip, user.firstName, user.lastName, user.emailAddress FROM event Left JOIN location ON event.location_id=location.id Left join user on event.user_id=user.id").ToList();
@@ -195,9 +196,5 @@ namespace kalendarium.Models
         {
             return db.Query<JoinEventUserLocation>("SELECT event.*, location.city, location.state, location.street, location.zip, user.firstName, user.lastName, user.emailAddress FROM event Left JOIN location ON event.location_id=location.id Left join user on event.user_id=user.id where event.id = @eventid", new { eventid = eventID }).ToList();
         }
-
-
     }
-
 }
-

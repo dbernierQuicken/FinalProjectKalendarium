@@ -63,7 +63,7 @@ import { NewEventFormComponent } from './Components/new-event-form/new-event-for
     MatDatepickerModule,
     RouterModule.forRoot([
       { path: '', component: EventListComponent },
-
+      { path: 'calendar/getCal', component: MonthComponent },
       { path: 'events/getallevents', component: EventListComponent },
       { path: 'events/addEvent', component: NewEventFormComponent },
       { path: 'coworkers/getallcoworkers', component: FriendsListComponent },
@@ -71,9 +71,7 @@ import { NewEventFormComponent } from './Components/new-event-form/new-event-for
       { path: 'user/sign-up', component: SignUpComponent },
       { path: 'user/usershowday', component: DayComponent },
       { path: '**', component: PageNotFoundComponent },
-      { path: 'calendar/getCal', component: MonthComponent },
-
-
+      { path: 'calendar/getCal', component: MonthComponent },
 
     ]),
     BrowserAnimationsModule
