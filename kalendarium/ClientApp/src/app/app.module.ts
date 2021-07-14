@@ -71,6 +71,9 @@ import { NewEventFormComponent } from './Components/new-event-form/new-event-for
       { path: 'user/sign-up', component: SignUpComponent },
       { path: 'user/usershowday', component: DayComponent },
       { path: '**', component: PageNotFoundComponent },
+      { path: 'calendar/getCal', component: MonthComponent },
+
+
 
     ]),
     BrowserAnimationsModule
