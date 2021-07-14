@@ -1,6 +1,6 @@
 
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from '../../Services/login.service';
 @Component({
   selector: 'app-sign-up',
@@ -14,10 +14,10 @@ export class SignUpComponent {
   password: string = '';
   dept: string = '';
   firstname: string = '';
-  lastname: string = ''; constructor(private logService: LoginService, private thisroute: ActivatedRoute) {
+  lastname: string = ''; constructor(private logService: LoginService, private route: Router) {
   } OnSubmit() {
     console.log(this.emailaddress, this.password, this.dept, this.firstname, this.lastname);
-    this.logService.isUser(this.firstname, this.lastname, this.emailaddress, this.dept, this.password);
+    //this.logService.isUser(this.firstname, this.lastname, this.emailaddress, this.dept, this.password);
     //console.log('Check over here: ', this.logService.isuser);
     //if (this.logService.isuser) {
     // this.signinmessage = 'Account for this user has already been created';
@@ -28,7 +28,7 @@ export class SignUpComponent {
     // this.route.navigateByUrl('');
     //}
     this.logService.AddUser(this.firstname, this.lastname, this.emailaddress, this.dept, this.password);
-    //this.route.navigateByUrl('events/getallevents');
+    this.route.navigateByUrl('/events/getallevents');
     //this.logService.username = this.emailaddress; }
   }
 
