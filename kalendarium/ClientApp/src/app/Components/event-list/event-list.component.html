@@ -66,5 +66,6 @@
 
 <br />
 <br />
-
-<button routerLink="/events/addEvent"> Add Event</button>
+<ng-container *ngIf="this.userslist.currentuser">
+  <button routerLink="/events/addEvent"> Add Event</button>
+</ng-container>
