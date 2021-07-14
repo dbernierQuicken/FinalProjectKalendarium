@@ -5,17 +5,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { KalendariumApiService } from '../../Services/kalendarium-api.service';
 import { LoginService } from '../../Services/login.service';
 
-export interface MockData {
-  date: string;
-  time: string;
-  eventName: string;
-  location: string;
-  coworker: string;
-}
-
-const ELEMENT_DATA: MockData[] = [
-
-];
 
 /**
  * @title Table with filtering
