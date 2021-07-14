@@ -2,13 +2,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'oidc-client';
+
 @Injectable()
 export class LoginService {
   http: HttpClient = null;
-  username: string = '';
-  isuser: boolean = null; constructor(theHttp: HttpClient) {
+  currentuser = null;
+
+  isuser: boolean = null;
+
+  constructor(theHttp: HttpClient) {
     this.http = theHttp;
-  } AddUser(fName, lName, eAddress, dPart, pWord) {
+  }
+
+  AddUser(fName, lName, eAddress, dPart, pWord) {
     let myformdata = new FormData();
     myformdata.append('fName', fName);
     myformdata.append('lName', lName);
@@ -18,6 +24,7 @@ export class LoginService {
     this.http.post<any>(`/user/add`, myformdata, {}).subscribe(results => {
       console.log(results);
     });
+    
   }
   GetAllUsers(cb) {
     this.http.get<any>('/user/getall').subscribe(results => {
@@ -37,6 +44,7 @@ export class LoginService {
     });
   } getUserByEmail(eAddress, cb) {
     this.http.get<any>(`/user/getuser/${eAddress}`).subscribe(results => {
+      this.currentuser = results;
       cb(results);
     });
   } AddCoworker(toHide, thisUser, coworkerID) {
