@@ -40,12 +40,12 @@ export class DayComponent implements OnInit {
     });
   }
 
-  showtoday() {
+  /* THIS ISNT WORKING ----  showtoday() {
     this.eventslist.getEventsForToday(this.userslist.)(eventresult => {
       this.events = eventresult;
-      /*   console.log(this.events);*/
+      /*   console.log(this.events);
     });
-  }
+  }*/
 
 
   showuser() {
