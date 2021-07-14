@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from '../../Services/login.service';
 
 @Component({
   selector: 'app-account-button',
@@ -8,10 +10,12 @@ import { Component } from '@angular/core';
 /** HomeButton component*/
 export class AccountButtonComponent {
   /** HomeButton ctor */
-  constructor() {
+  constructor(private logService: LoginService, private route: Router) {
   }
 
   OnLogOut() {
-    alert("Logout")
+    this.logService.currentuser = null;
+    alert("Logged Out, Broham!");
+    this.route.navigateByUrl('events/getallevents');
   }
 }
