@@ -67,13 +67,16 @@ export class NewEventFormComponent implements OnInit {
     this.eventservice.MakeNewEvent(this.userslist.currentuser.id, this.event, this.isPrivate, newDate, eventresult => {
       this.eventservice.currentevent = eventresult;
     console.log('this one: ', this.eventservice.currentevent);
-    });
     console.log(this.street, this.city, this.state, this.zip);
+    });
     this.eventservice.AddLocation(this.city, this.state, this.street, this.zip, locationresult => {
       this.eventservice.currentloc = locationresult;
+      console.log('this is the location', this.eventservice.currentloc);
+    this.route.navigateByUrl('/events/addEvent');
+      this.eventservice.UpdateEvent(this.eventservice.currentevent.id, this.event, this.isPrivate, newDate, this.eventservice.currentloc.id, this.userslist.currentuser.id);
     });
 
-    this.route.navigateByUrl('/user/usershowday');
+    //this.route.navigateByUrl('/user/usershowday');
   }
 
   ngOnInit() {

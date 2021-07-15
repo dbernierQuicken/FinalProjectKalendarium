@@ -56,6 +56,8 @@ export class DayComponent implements OnInit {
   OnDelete(eventID) {
     console.log(eventID);
     this.eventslist.DeleteEvent(eventID);
+
+    this.route.navigateByUrl('/user/usershowday');
   }
   /*
    * Work On this later 
