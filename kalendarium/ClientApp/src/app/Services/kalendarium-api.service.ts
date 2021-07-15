@@ -8,6 +8,7 @@ export class KalendariumApiService {
   alleventsLocUsr = null;
   oneevent = null;
   dayevent = null;
+  //anID = null;
  //MAYBE?  id = null;
   /*  userName = null;*/
 

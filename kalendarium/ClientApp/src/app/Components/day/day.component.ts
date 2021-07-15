@@ -72,7 +72,12 @@ export class DayComponent implements OnInit {
     });
   }
 
-  redirecttoedit() {
+  redirecttoedit(id) {
+
+    this.eventservice.ReadOneEventByID(id, eventresult => {
+      console.log(eventresult);
+      this.eventservice.oneevent = eventresult;
+    });
     this.route.navigateByUrl('/event/edit');
 
   }
