@@ -3,10 +3,15 @@
 }
 
 .tool-bar{
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0; /* required */
   color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
 }
 .expand-menu{
   background-color:  rgba(251, 250, 245);
+}
+a{
+  text-decoration: none;
+
 }

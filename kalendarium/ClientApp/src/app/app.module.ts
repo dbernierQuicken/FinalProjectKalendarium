@@ -23,11 +23,18 @@ import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { LoginComponent } from './Components/login/login.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 import { NewEventFormComponent } from './Components/new-event-form/new-event-form.component'
+<<<<<<< HEAD
 import { MatButtonModule } from '@angular/material/button';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { ReactiveFormsModule } from '@angular/forms';
+=======
+
+import {MatButtonModule} from '@angular/material/button';
+import { UpdateEventComponent } from './Components/update-event/update-event.component';
+
+>>>>>>> 0eadff47c3e26d099a6677018eacd038df7c0239
 
 
 @NgModule({
@@ -46,7 +53,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     SignUpComponent,
     LoginComponent,
     PageNotFoundComponent,
-    NewEventFormComponent
+    NewEventFormComponent,
+    UpdateEventComponent
+    
+
 
   ],
   imports: [
@@ -77,8 +87,21 @@ import { ReactiveFormsModule } from '@angular/forms';
       { path: 'user/login', component: LoginComponent },
       { path: 'user/sign-up', component: SignUpComponent },
       { path: 'user/usershowday', component: DayComponent },
-      { path: '**', component: PageNotFoundComponent },
       { path: 'calendar/getCal', component: MonthComponent },
+      { path: 'event/edit', component: UpdateEventComponent },
+
+
+
+
+
+
+      /////////////////////////////////////////////////
+                       // DONT MOVE //
+
+
+
+      { path: '**', component: PageNotFoundComponent },
+     
 
     ]),
     BrowserAnimationsModule

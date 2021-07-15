@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { KalendariumApiService } from '../../Services/kalendarium-api.service';
 import { LoginService } from '../../Services/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-day',
@@ -12,8 +13,8 @@ import { LoginService } from '../../Services/login.service';
 })
 export class DayComponent implements OnInit {
 
-  displayedColumns: string[] = ['id','eventName', 'privateEvent', 'date', 'location'];
- 
+  displayedColumns: string[] = ['id', 'eventName', 'privateEvent', 'date', 'location', 'edit', 'delete'];
+
   events = null;
   eventslist: KalendariumApiService = null;
 
@@ -21,7 +22,9 @@ export class DayComponent implements OnInit {
   users = null;
   userslist: LoginService = null;
 
-  constructor(private eventservice: KalendariumApiService, private userService: LoginService) {
+
+
+  constructor(private eventservice: KalendariumApiService, private userService: LoginService, private route: Router) {
     this.eventslist = eventservice;
     this.userslist = userService;
     this.showtoday();
@@ -30,7 +33,7 @@ export class DayComponent implements OnInit {
 
   ngOnInit(): void {
 
-   
+
 
   }
 
@@ -42,12 +45,24 @@ export class DayComponent implements OnInit {
   }
 
   showtoday() {
-    /*   NOTWORKING */
+
     this.eventslist.getEventsForToday(this.userslist.currentuser.id, eventresult => {
       this.events = eventresult;
-     console.log(this.events);
+      console.log(this.events);
     });
   }
+
+
+  OnDelete(eventID) {
+    console.log(eventID);
+    this.eventslist.DeleteEvent(eventID);
+  }
+  /*
+   * Work On this later 
+  updateEvent(eventID) {
+    console.log(eventID);
+    this.eventslist.UpdateEvent. 
+  } */
 
 
   showuser() {
@@ -56,5 +71,12 @@ export class DayComponent implements OnInit {
       /*    console.log(this.users);*/
     });
   }
+
+  redirecttoedit() {
+    this.route.navigateByUrl('/event/edit');
+
+  }
+
+
 
 }
