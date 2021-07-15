@@ -1,15 +1,16 @@
-<h1>CALENDAR Final</h1>
+<div class="month-comp-div">
+<h3>Calendar</h3>
 <ng-container *ngIf="dataSource">
   <mat-form-field appearance="standard">
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
   </mat-form-field>
 </ng-container>
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table matSort table-striped sticky-header [dataSource]="dataSource" class="mat-elevation-z8">
 
   <!-- Date Column -->
   <ng-container matColumnDef="date">
-    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <th mat-header-cell *matHeaderCellDef color="primary" > Date </th>
     <td mat-cell *matCellDef="let element">
       {{element.dt.slice(0, -9) }}
 
@@ -21,7 +22,7 @@
 
   <!-- Month Column -->
   <ng-container matColumnDef="monthName">
-    <th mat-header-cell *matHeaderCellDef> Month </th>
+    <th mat-header-cell *matHeaderCellDef > Month </th>
     <td mat-cell *matCellDef="let element">
       {{element.monthName}}
     </td>
@@ -39,9 +40,12 @@
   <ng-container matColumnDef="eventsList">
     <th mat-header-cell *matHeaderCellDef> Days Events </th>
     <td mat-cell *matCellDef="let element">
-      <button mat-raised-button color="accent"  (click)="AddEvent()">
+      <div *ngIf="element">
+        <button mat-raised-button color="accent"  (click)="AddEvent()">
         Add Event
       </button>
+    </div>
+
     </td>
   </ng-container>
 
@@ -49,10 +53,6 @@
   <ng-container matColumnDef="holiday">
     <th mat-header-cell *matHeaderCellDef> Holiday </th>
     <td mat-cell *matCellDef="let element">
-      <!--            <div *ngIf="element.isHoliday == false">
-                      No Holiday
-                  </div>-->
-
       <span *ngIf="element.isHoliday == true">
         {{element.holidayDescr}}
       </span>
@@ -63,8 +63,8 @@
   <ng-container matColumnDef="payDay">
     <th mat-header-cell *matHeaderCellDef> Pay Day</th>
     <td mat-cell *matCellDef="let element">
-      <div *ngIf="element.d % 14 == 0" class="payDay">
-        Pay Day
+      <div *ngIf="element.d % 14 == 0" >
+        <button mat-raised-button color="accent" class="payDay">Pay Day</button>
       </div>
     </td>
   </ng-container>
@@ -87,3 +87,4 @@
     <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
   </tr>
 </table>
+</div>
