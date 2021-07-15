@@ -21,13 +21,14 @@
       <td>
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Private Event?</mat-label>
-          <input matInput [(ngModel)]="isprivate" name="isprivate" hidden>
+          <input matInput [(ngModel)]="isPrivate" name="isPrivate" hidden>
           <mat-checkbox (change)="setAll()" class="example-margin" [(ngModel)]="isprivate" name="isprivate">Check me!</mat-checkbox>
 
         </mat-form-field>
       </td>
     </tr>
   </table>
+
   <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>
-  <button >Submit</button>
+
 </form>
