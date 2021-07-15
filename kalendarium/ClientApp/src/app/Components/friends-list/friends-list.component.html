@@ -12,7 +12,7 @@
   <ng-container matColumnDef="coworker">
     <th mat-header-cell *matHeaderCellDef> Team Member </th>
     <td mat-cell *matCellDef="let element">
-      <button class="team-memeber-button" (click)="CoworkerClick(element.coworker)">
+      <button mat-raised-button color="primary"  (click)="CoworkerClick(element.coworker)">
         {{element.firstName}} {{element.lastName}}
       </button>
     </td>
@@ -22,9 +22,10 @@
   <ng-container matColumnDef="department">
     <th mat-header-cell *matHeaderCellDef> Department </th>
     <td mat-cell *matCellDef="let element">
-      <button class="team-memeber-button" (click)="CoworkerClick(element.department)">
+<!--       <button mat-raised-button color="primary"  (click)="CoworkerClick(element.department)">
         {{element.department}}
-      </button>
+      </button> -->
+      <p>  {{element.department}}</p>
     </td>
   </ng-container>
 
@@ -40,7 +41,7 @@
   <ng-container matColumnDef="hideEvent">
     <th mat-header-cell *matHeaderCellDef> Hide Events </th>
     <td mat-cell *matCellDef="let element">
-      <button class="team-memeber-button">
+      <button mat-raised-button color="accent" >
         Hide Event Button
       </button>
     </td>
