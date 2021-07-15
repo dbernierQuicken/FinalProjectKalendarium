@@ -22,7 +22,8 @@ import { AccountButtonComponent } from './Components/account-button/account-butt
 import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { LoginComponent } from './Components/login/login.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
-import { NewEventFormComponent } from './Components/new-event-form/new-event-form.component';
+import { NewEventFormComponent } from './Components/new-event-form/new-event-form.component'
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { NewEventFormComponent } from './Components/new-event-form/new-event-for
     MatInputModule,
     MatNativeDateModule,
     MatDatepickerModule,
+    MatButtonModule,
     RouterModule.forRoot([
       { path: '', component: EventListComponent },
       { path: 'calendar/getCal', component: MonthComponent },

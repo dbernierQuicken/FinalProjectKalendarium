@@ -39,7 +39,9 @@
   <ng-container matColumnDef="eventsList">
     <th mat-header-cell *matHeaderCellDef> Days Events </th>
     <td mat-cell *matCellDef="let element">
-      <button (click)="AddEvent()"> Add Event</button>
+      <button mat-raised-button color="accent"  (click)="AddEvent()">
+        Add Event
+      </button>
     </td>
   </ng-container>
 
