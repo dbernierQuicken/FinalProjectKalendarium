@@ -93,9 +93,9 @@ namespace kalendarium.Models
         //-----------------------------------------------------------------------------
         //--------------------EVENT CRUD-----------------------------------------------
         //-----------------------------------------------------------------------------
-        public static Event MakeNewEvent(int thisUser, string userName, bool privateParty, DateTime dateID)
+        public static Event MakeNewEvent(int userID, string eventName, bool isPrivate, DateTime dateID)
         {
-            Event newEvent = new Event() { user_id = thisUser, name = userName, privateEvent = privateParty, dt_id = dateID };
+            Event newEvent = new Event() { user_id = userID, name = eventName, privateEvent = isPrivate, dt_id = dateID };
             db.Insert(newEvent);
             return newEvent;
         }

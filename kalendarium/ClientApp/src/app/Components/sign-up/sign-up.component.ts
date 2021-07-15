@@ -42,7 +42,7 @@ export class SignUpComponent {
     //console.log(this.currentuser);
     //this.logService.currentuser = this.currentuser;
     
-    console.log('hey check this shit out', this.logService.currentuser);
+    console.log('hey check this out', this.logService.currentuser);
     this.route.navigateByUrl('/user/login');
   }
 
