@@ -76,14 +76,15 @@ export class KalendariumApiService {
     });
   }
 
+
   UpdateEvent(eventid, uid, eventname, isPrivate, locID, date) {
     let myformdata = new FormData();
     myformdata.append('eventid', eventid);
+    myformdata.append('uid', uid);
     myformdata.append('eventname', eventname);
     myformdata.append('isPrivate', isPrivate);
-    myformdata.append('date', date);
     myformdata.append('locID', locID);
-    myformdata.append('uid', uid);
+    myformdata.append('date', date);
 
     this.http.post<any>(`/event/update`, myformdata, {}).subscribe(results => {
       console.log(results);
