@@ -10,19 +10,23 @@ export class KalendariumApiService {
   dayevent = null;
  //MAYBE?  id = null;
   /*  userName = null;*/
+  currentevent = null;
+  currentloc = null;
 
   constructor(theHttp: HttpClient) {
     this.http = theHttp;
   }
 
-  MakeNewEvent(userID, eventName, isPrivate, dateID) {
+  MakeNewEvent(userID, eventName, isPrivate, dateID, cb) {
     let myformdata = new FormData();
     myformdata.append('userID', userID);
     myformdata.append('eventName', eventName);
     myformdata.append('isPrivate', isPrivate);
     myformdata.append('dateID', dateID);
     this.http.post<any>(`/event/addevent`, myformdata, {}).subscribe(results => {
+      cb(results);
       console.log(results);
+
     });
   }
   ReadOneEventByID(eventId, cb) {
@@ -46,7 +50,7 @@ export class KalendariumApiService {
     });
   }
 
-  AddLocation(city, state, street, zip) {
+  AddLocation(city, state, street, zip, cb) {
     let myformdata = new FormData();
     myformdata.append('city', city);
     myformdata.append('state', state);
@@ -54,6 +58,7 @@ export class KalendariumApiService {
     myformdata.append('zip', zip);
     this.http.post<any>(`/location/add`, myformdata, {
     }).subscribe(results => {
+      cb(results);
       console.log(results);
     });
   }
