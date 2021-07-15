@@ -15,9 +15,9 @@ namespace kalendarium.Controllers
     {
 
         [HttpPost("addevent")]
-        public bool MakeNewEvent([FromForm] int thisUser, [FromForm] string userName, [FromForm] bool privateParty, [FromForm] DateTime dateID)
+        public bool MakeNewEvent([FromForm] int userID, [FromForm] string eventName, [FromForm] bool isPrivate, [FromForm] DateTime dateID)
         {
-            DAL.MakeNewEvent(thisUser, userName, privateParty, dateID);
+            DAL.MakeNewEvent(userID, eventName, isPrivate, dateID);
             return true;
         }
 

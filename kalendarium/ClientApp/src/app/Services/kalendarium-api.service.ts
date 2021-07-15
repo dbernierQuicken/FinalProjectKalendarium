@@ -14,10 +14,10 @@ export class KalendariumApiService {
     this.http = theHttp;
   }
 
-  MakeNewEvent(userID, userName, isPrivate, dateID) {
+  MakeNewEvent(userID, eventName, isPrivate, dateID) {
     let myformdata = new FormData();
     myformdata.append('userID', userID);
-    myformdata.append('userName', userName);
+    myformdata.append('eventName', eventName);
     myformdata.append('isPrivate', isPrivate);
     myformdata.append('dateID', dateID);
     this.http.post<any>(`/event/addevent`, myformdata, {}).subscribe(results => {
