@@ -17,7 +17,7 @@ import { LoginService } from '../../Services/login.service';
 })
 
 export class EventListComponent {
-  displayedColumns: string[] = ['id', 'name', 'eventName', 'privateEvent', 'date',];
+  displayedColumns: string[] = [ 'name', 'eventName', 'privateEvent', 'date',];
 
   events = null;
   eventslist: KalendariumApiService = null;
