@@ -1,9 +1,14 @@
+.month-comp-div{
+  padding-top: 5rem;
+}
+
+
 table {
   width: 100%;
 }
 
 .mat-form-field {
-  font-size: 14px;
+  font-size: 20px;
   width: 100%;
 }
 
@@ -12,6 +17,24 @@ table {
 }
 
 .payDay {
-  font-weight: bolder;
-  color: green;
+ /*  font-weight: bolder; */
+  color:white !important;
+  background-color: green !important;
+  pointer-events: none !important;
+}
+
+
+button{
+  background-color: blueviolet !important;
+  line-height: 23px;
+  padding: none;
+}
+
+
+th{
+/*   position: sticky; */
+  background-color: #5866b1d2;
+  color: white;
+  font-size: 1.33rem;
+   font-weight: bolder;
 }

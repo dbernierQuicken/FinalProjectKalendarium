@@ -1,12 +1,20 @@
+
+
+
+
 .example-spacer {
   flex: 1 1 auto;
+ /*  z-index: 1; */
+
 }
 
 .tool-bar{
-  position: sticky;
-  position: -webkit-sticky;
+
+ position: fixed;
+  position: -webkit-fixed;
   top: 0; /* required */
   color: #fff;
+  z-index: 500;
 }
 .expand-menu{
   background-color:  rgba(251, 250, 245);

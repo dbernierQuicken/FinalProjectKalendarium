@@ -24,6 +24,8 @@ import { LoginComponent } from './Components/login/login.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 import { NewEventFormComponent } from './Components/new-event-form/new-event-form.component'
 import { MatButtonModule } from '@angular/material/button';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import {MatSortModule} from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatNativeDateModule,
     MatDatepickerModule,
     MatButtonModule,
+    ScrollingModule,
+    MatSortModule,
     RouterModule.forRoot([
       { path: '', component: EventListComponent },
       { path: 'calendar/getCal', component: MonthComponent },
