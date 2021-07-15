@@ -1,14 +1,12 @@
 .example-form {
+  position: relative;
   justify-content: center;
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
+  right: -20rem;
+  width: 50%;
 }
 
 .example-full-width {
   width: 100%;
 }
 
-td {
-  padding-right: 8px;
-}
+
