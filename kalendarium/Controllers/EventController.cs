@@ -61,9 +61,10 @@ namespace kalendarium.Controllers
         }
 
 
-        [HttpPut("update/")]
-        public  bool UpdateEvent(Event toUpdate)
+        [HttpPost("update")]
+        public  bool UpdateEvent([FromForm] int eventid, [FromForm] int uid,[FromForm] string eventname, [FromForm] bool isPrivate, [FromForm] int locID, [FromForm] DateTime date)
         {
+            Event toUpdate = new Event() { id = eventid, name = eventname, privateEvent = isPrivate, location_id = locID, user_id = uid, dt_id = date };
             DAL.UpdateEvent(toUpdate);
             return true;
         
