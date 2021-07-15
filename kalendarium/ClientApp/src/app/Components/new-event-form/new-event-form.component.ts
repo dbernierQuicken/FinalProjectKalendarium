@@ -72,6 +72,7 @@ export class NewEventFormComponent implements OnInit {
     this.eventservice.AddLocation(this.city, this.state, this.street, this.zip, locationresult => {
       this.eventservice.currentloc = locationresult;
     });
+
     this.route.navigateByUrl('/user/usershowday');
   }
 
