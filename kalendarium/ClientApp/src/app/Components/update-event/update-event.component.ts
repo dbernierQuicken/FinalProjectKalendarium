@@ -14,7 +14,7 @@ export class UpdateEventComponent {
   
   eventslist = null;
   userslist = null;
-  event = '';
+  @Input() event = '';
   date = null;
   isPrivate: boolean = false;
   checked = false;
@@ -41,9 +41,9 @@ export class UpdateEventComponent {
 
   onSubmit() {
     let newDate = `${this.date.getYear() + 1900}-${this.date.getMonth() + 1}-${this.date.getDate()}`;
-    console.log(this.event, newDate, this.userslist.currentuser.id, this.isPrivate);
+    console.log(this.event, this.isPrivate);
     //console.log(this.isprivate);
-   // this.eventservice.UpdateEvent(this.userslist.currentuser.id, this.event, this.isPrivate, newDate); work on this 
+    this.eventservice.UpdateEvent(this.eventservice.oneevent.id, this.event, this.isPrivate, newDate, this.eventservice.oneevent.location_id);
     this.route.navigateByUrl('/user/usershowday');
   }
 
