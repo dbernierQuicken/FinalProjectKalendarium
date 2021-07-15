@@ -120,10 +120,10 @@ namespace kalendarium.Models
             return db.Query<Event>("select * from Event where user_id = @user", new { user = userID }).ToList();
         }
 
-        public static bool UpdateEvent(Event toUpdate)
+        public static Event UpdateEvent(Event toUpdate)
         {
             db.Update<Event>(toUpdate);
-            return true;
+            return toUpdate;
         }
 
         public static bool DeleteEvent(int eventID)
