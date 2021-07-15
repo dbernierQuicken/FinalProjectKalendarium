@@ -1,16 +1,5 @@
-/* Structure */
-*{
-  margin-top: 10rem;
-  padding-top: 10rem;
-}
-
-h4{
-  position: relative;
-
-}
 table {
   width: 100%;
-  padding: 10rem;
 }
 
 .mat-form-field {
