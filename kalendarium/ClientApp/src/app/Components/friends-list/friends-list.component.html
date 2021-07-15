@@ -1,8 +1,13 @@
-<br />
-<h4 class="events-list-header">All Coworkers</h4>
-<ng-container appearance="standard">
-  <input matInput (keyup)="applyFilter($event)" placeholder="Filter Coworker Table" #input>
-</ng-container>
+<div class="friends-list-comp">
+  <h3 class="events-list-header">
+    All Coworkers
+  </h3>
+  <ng-container *ngIf="dataSource">
+  <mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Filter Coworker Table" #input>
+  </mat-form-field>
+  </ng-container>
 <br />
 <br />
 
@@ -12,7 +17,7 @@
   <ng-container matColumnDef="coworker">
     <th mat-header-cell *matHeaderCellDef> Team Member </th>
     <td mat-cell *matCellDef="let element">
-      <button mat-raised-button color="primary"  (click)="CoworkerClick(element.coworker)">
+      <button mat-raised-button color="primary"  (click)="CoworkerClick(element.coworker)" class="user-button">
         {{element.firstName}} {{element.lastName}}
       </button>
     </td>
@@ -22,10 +27,7 @@
   <ng-container matColumnDef="department">
     <th mat-header-cell *matHeaderCellDef> Department </th>
     <td mat-cell *matCellDef="let element">
-<!--       <button mat-raised-button color="primary"  (click)="CoworkerClick(element.department)">
-        {{element.department}}
-      </button> -->
-      <p>  {{element.department}}</p>
+      <p>{{element.department}}</p>
     </td>
   </ng-container>
 
@@ -41,8 +43,8 @@
   <ng-container matColumnDef="hideEvent">
     <th mat-header-cell *matHeaderCellDef> Hide Events </th>
     <td mat-cell *matCellDef="let element">
-      <button mat-raised-button color="accent" >
-        Hide Event Button
+      <button mat-raised-button color="accent" class="hide-event-button">
+        Hide Events For {{element.firstName}}
       </button>
     </td>
   </ng-container>
@@ -55,3 +57,4 @@
     <td class="mat-cell" colspan="4">No data matching for:  "{{input.value}}"</td>
   </tr>
 </table>
+</div>
