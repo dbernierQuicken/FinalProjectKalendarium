@@ -1,19 +1,20 @@
-<mat-toolbar color="primary" >
+ <mat-toolbar color="primary" class="tool-bar" >
+
   <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu" class="expand-menu">
 
     <a routerLink="/events/getallevents">
-      <button mat-menu-item>
-        <mat-icon>view_list</mat-icon>
+      <button   mat-menu-item>
+        <mat-icon color="accent"> view_list</mat-icon>
         <span>Event List </span>
       </button>
     </a>
 
     <a routerLink="/coworkers/getallcoworkers">
       <button mat-menu-item>
-        <mat-icon>group</mat-icon>
+        <mat-icon color="accent">group</mat-icon>
         <span>Coworkers</span>
       </button>
     </a>
@@ -21,7 +22,7 @@
     <!--Day Comp  -->
     <a routerLink="/user/usershowday">
       <button mat-menu-item>
-        <mat-icon>calendar_today</mat-icon>
+        <mat-icon color="accent">calendar_today</mat-icon>
         <span>Today</span>
       </button>
     </a>
@@ -29,7 +30,7 @@
     <!--Eventually add Calendar Component-->
     <a routerLink="/calendar/getCal">
       <button mat-menu-item>
-        <mat-icon>event</mat-icon>
+        <mat-icon color="accent">event</mat-icon>
         <span>Calendar</span>
       </button>
     </a>
