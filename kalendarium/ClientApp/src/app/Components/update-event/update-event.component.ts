@@ -41,9 +41,9 @@ export class UpdateEventComponent {
 
   onSubmit() {
     let newDate = `${this.date.getYear() + 1900}-${this.date.getMonth() + 1}-${this.date.getDate()}`;
-    console.log(this.event, this.isPrivate);
+    console.log(this.event, this.isPrivate, newDate);
     //console.log(this.isprivate);
-    this.eventservice.UpdateEvent(this.eventservice.oneevent.id, this.event, this.isPrivate, newDate, this.eventservice.oneevent.location_id, this.userService.currentuser.id);
+    this.eventservice.UpdateEvent(this.eventservice.oneevent.id, this.userService.currentuser.id, this.event, this.isPrivate, this.eventservice.oneevent.location_id, newDate);
     this.route.navigateByUrl('/user/usershowday');
   }
 
