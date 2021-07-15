@@ -9,7 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 
 export class MonthComponent {
-  displayedColumns: string[] = ['date', 'monthName', 'dayName', 'eventsList', 'holiday', 'payDay', 'weekend'];
+  displayedColumns: string[] = ['date', 'monthName', 'dayName', 'holiday', 'payDay','eventsList', 'weekend'];
   dataSource;
 
   constructor(private calendarService: KalendariumApiService) {

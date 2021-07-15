@@ -1,3 +1,45 @@
+.friends-list-comp{
+  padding-top: 5rem;
+}
+
+
 table {
   width: 100%;
+}
+
+.mat-form-field {
+  font-size: 20px;
+  width: 100%;
+}
+
+/* .weekend {
+  font-weight: bolder;
+} */
+
+th{
+  /*   position: sticky; */
+    background-color: #5866b1d2;
+    color: white;
+    font-size: 1.33rem;
+     font-weight: bolder;
+  }
+
+
+.hide-event-button{
+  line-height: 23px;
+  font-weight: bolder;
+  font-size: 1rem;
+
+}
+
+
+
+.user-button{
+  font-weight: bolder;
+  font-size: 1rem;
+}
+
+p{
+  font-weight: bolder;
+  font-size: 1rem;
 }
