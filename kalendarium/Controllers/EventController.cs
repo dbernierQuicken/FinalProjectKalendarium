@@ -70,9 +70,9 @@ namespace kalendarium.Controllers
         }
 
         [HttpDelete("remove/{eventId}")]
-        public bool RemoveUserFavorite(int id)
+        public bool DeleteEvent(int eventID)
         {
-            DAL.DeleteEvent(id);
+            DAL.DeleteEvent(eventID);
             return true;
         }
      
