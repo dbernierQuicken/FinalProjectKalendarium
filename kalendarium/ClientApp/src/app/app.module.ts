@@ -24,6 +24,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 import { NewEventFormComponent } from './Components/new-event-form/new-event-form.component'
 import {MatButtonModule} from '@angular/material/button';
+import { UpdateEventComponent } from './Components/update-event/update-event.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,9 @@ import {MatButtonModule} from '@angular/material/button';
     SignUpComponent,
     LoginComponent,
     PageNotFoundComponent,
-    NewEventFormComponent
+    NewEventFormComponent,
+    UpdateEventComponent
+    
 
   ],
   imports: [
@@ -72,8 +75,21 @@ import {MatButtonModule} from '@angular/material/button';
       { path: 'user/login', component: LoginComponent },
       { path: 'user/sign-up', component: SignUpComponent },
       { path: 'user/usershowday', component: DayComponent },
-      { path: '**', component: PageNotFoundComponent },
       { path: 'calendar/getCal', component: MonthComponent },
+      { path: 'event/edit', component: UpdateEventComponent },
+
+
+
+
+
+
+      /////////////////////////////////////////////////
+                       // DONT MOVE //
+
+
+
+      { path: '**', component: PageNotFoundComponent },
+     
 
     ]),
     BrowserAnimationsModule

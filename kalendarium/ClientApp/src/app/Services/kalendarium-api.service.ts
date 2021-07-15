@@ -8,6 +8,7 @@ export class KalendariumApiService {
   alleventsLocUsr = null;
   oneevent = null;
   dayevent = null;
+ //MAYBE?  id = null;
   /*  userName = null;*/
 
   constructor(theHttp: HttpClient) {
@@ -69,11 +70,33 @@ export class KalendariumApiService {
     });
   }
 
+  UpdateEvent(Eid, Ename, EprivateEvent, Edt_id, Elocation_id) {
+    let myformdata = new FormData();
+    myformdata.append('Eid', Eid);
+    myformdata.append('Ename', Ename);
+    myformdata.append('EprivateEvent', EprivateEvent);
+    myformdata.append('Edt_id', Edt_id);
+    myformdata.append('Elocation_id', Elocation_id);
+    this.http.put<any>(`/event/update`, myformdata, {
+    }).subscribe(results => {
+      console.log(results);
+    });
+  }
+
+
+
   DeleteLocation(Lid) {
     this.http.delete<any>(`/location/remove/${Lid}`, {}).subscribe(results => {
       console.log(results);
     });
   }
+
+
+  DeleteEvent(eventID) {
+    this.http.delete<any>(`/event/remove/${eventID}`).subscribe(result => {
+      console.log(result);
+    });
+  } 
 
   GetAllEventsWithLocation(cb) {
     this.http.get<any>('/location/withevent').subscribe(results => {
