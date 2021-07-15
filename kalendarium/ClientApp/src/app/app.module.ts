@@ -1,3 +1,4 @@
+import { FooterComponent } from './Components/footer/footer.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -33,6 +34,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import {MatButtonModule} from '@angular/material/button';
 import { UpdateEventComponent } from './Components/update-event/update-event.component';
+import { FocResourcesComponent } from './Components/foc-resources/foc-resources.component';
 
 
 
@@ -53,8 +55,10 @@ import { UpdateEventComponent } from './Components/update-event/update-event.com
     LoginComponent,
     PageNotFoundComponent,
     NewEventFormComponent,
-    UpdateEventComponent
-    
+    UpdateEventComponent,
+    FooterComponent,
+    FocResourcesComponent
+
 
 
   ],
@@ -102,12 +106,15 @@ import { UpdateEventComponent } from './Components/update-event/update-event.com
 
 
       { path: '**', component: PageNotFoundComponent },
-     
+
 
     ]),
     BrowserAnimationsModule
   ],
   providers: [KalendariumApiService, LoginService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[
+    FocResourcesComponent,
+  ]
 })
 export class AppModule { }
