@@ -63,11 +63,11 @@ export class EventListComponent {
     this.events.filter = filterValue.trim().toLowerCase();
   }
 
-  public EventClick(id) {
-    this.eventslist.getOneEventWithLocationAndUser(id, result => {
-      console.log(result);
-    });
-  }
+  //public EventClick(id) {
+  //  this.eventslist.getOneEventWithLocationAndUser(id, result => {
+  //    console.log(result);
+  //  });
+  //}
 
 
 
@@ -83,6 +83,16 @@ export class EventListComponent {
     this.eventslist.DeleteEvent(eventID);
 
     this.route.navigateByUrl('/user/usershowday');
+  }
+
+  EventClick(id) {
+
+    this.eventservice.getOneEventWithLocationAndUser(id, eventresult => {
+      console.log(eventresult);
+      this.eventservice.oneevent = eventresult;
+    });
+    this.route.navigateByUrl('/event/details');
+
   }
 
   redirecttoedit(id) {

@@ -10,7 +10,7 @@ import { LoginService } from '../../Services/login.service';
   styleUrls: ['./event-detail.component.css']
 })
 export class EventDetailComponent {
-  displayedColumns: string[] = ['id', 'name', 'eventName', 'privateEvent', 'date', 'location'];
+  displayedColumns: string[] = ['id', 'eventName', 'privateEvent', 'date', 'location','edit','delete'];
 
   events = null;
   eventslist: KalendariumApiService = null;
@@ -24,35 +24,14 @@ export class EventDetailComponent {
   constructor(private eventservice: KalendariumApiService, private userService: LoginService) {
     this.eventslist = eventservice;
     this.userslist = userService;
-    //this.showall();
+
+    this.events = eventservice.oneevent;
   }
+
 
   ngOnInIt() {
   }
 
-  //showall() {
-  //  this.eventslist.getAllEventsWithLocationAndUser(eventresult => {
-  //    this.events = eventresult;
-  //    /*   console.log(this.events);*/
-  //  });
-  //}
-  //showuser() {
-  //  this.userslist.GetAllUsers(userresult => {
-  //    this.users = userresult;
-  //    /*    console.log(this.users);*/
-  //  });
-  //}
-
-  editevent() {
-
-  }
-
-  showeventsbyuser(id) {
-    
-    this.eventslist.ReadOneEventByID(id, result => {
-
-    });
-  }
 
 
 }
