@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./day.component.css']
 })
 export class DayComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'eventName', 'privateEvent', 'date', 'location', 'edit', 'delete'];
+  displayedColumns: string[] = ['date', 'eventName', 'privateEvent', 'location', 'edit', 'delete'];
 
   events = null;
   eventslist: KalendariumApiService = null;

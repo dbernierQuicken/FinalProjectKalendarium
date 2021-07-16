@@ -121,7 +121,7 @@ export class NewEventFormComponent implements OnInit {
       this.eventservice.UpdateEvent(this.eventservice.currentevent.id, this.event, this.isPrivate, newDate, this.eventservice.currentloc.id, this.userslist.currentuser.id);
     });
 
-    //this.route.navigateByUrl('/user/usershowday');
+    this.route.navigateByUrl('/user/usershowday');
   }
 
   ngOnInit() {
