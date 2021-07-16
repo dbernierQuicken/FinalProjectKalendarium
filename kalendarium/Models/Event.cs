@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Dapper.Contrib.Extensions;
+﻿using Dapper.Contrib.Extensions;
+using System;
 
 namespace kalendarium.Models
 {
@@ -11,6 +8,7 @@ namespace kalendarium.Models
     {
         [Key]
         public int id { get; set; }
+
         public int user_id { get; set; }
         public string name { get; set; }
         public bool privateEvent { get; set; }
@@ -18,6 +16,5 @@ namespace kalendarium.Models
         public int location_id { get; set; }
     }
 }
-
 
 //Make SQL cod for location_id In events field 

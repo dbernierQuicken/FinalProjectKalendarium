@@ -7,3 +7,19 @@ table {
   font-size: 14px;
   width: 100%;
 }
+
+.day-comp {
+  padding-top: 5rem;
+  max-height: 87.5vh;
+}
+
+.new-event-comp {
+}
+
+th {
+  /*   position: sticky; */
+  background-color: #5866b1d2;
+  color: white;
+  font-size: 1.33rem;
+  font-weight: bolder;
+}

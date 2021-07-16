@@ -1,12 +1,10 @@
-.month-comp-div{
+.month-comp-div {
   padding-top: 5rem;
   max-height: 87.5vh;
 }
 
-
 table {
   width: 100%;
-
 }
 
 .mat-form-field {
@@ -20,36 +18,33 @@ table {
 }
 
 .payDay {
- /*  font-weight: bolder; */
-  color:white !important;
+  /*  font-weight: bolder; */
+  color: white !important;
   background-color: green !important;
   pointer-events: none !important;
 }
-p{
+
+p {
   font-weight: bolder;
   font-size: 1rem;
 }
 
-button{
+button {
   background-color: blueviolet !important;
   line-height: 23px;
   padding: none;
-
   font-weight: bolder;
   font-size: 1rem;
 }
 
-
-
-th{
-/*   position: sticky; */
+th {
+  /*   position: sticky; */
   background-color: #5866b1d2;
   color: white;
   font-size: 1.33rem;
-   font-weight: bolder;
+  font-weight: bolder;
 }
 
-.light-font{
+.light-font {
   font-weight: 600;
-
 }

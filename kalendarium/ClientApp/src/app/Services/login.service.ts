@@ -1,4 +1,3 @@
-
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'oidc-client';
@@ -25,7 +24,6 @@ export class LoginService {
     this.http.post<any>(`/user/add`, myformdata, {}).subscribe(results => {
       console.log(results);
     });
-    
   }
   GetAllUsers(cb) {
     this.http.get<any>('/user/getall').subscribe(results => {
@@ -72,4 +70,3 @@ export class LoginService {
     });
   }
 }
-

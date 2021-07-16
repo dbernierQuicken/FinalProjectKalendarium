@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Data;
-using Dapper;
+﻿using Dapper;
 using Dapper.Contrib.Extensions;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 
 namespace kalendarium.Models
 {

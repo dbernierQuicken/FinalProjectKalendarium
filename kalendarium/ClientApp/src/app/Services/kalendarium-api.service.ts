@@ -9,7 +9,7 @@ export class KalendariumApiService {
   oneevent = null;
   dayevent = null;
   //anID = null;
- //MAYBE?  id = null;
+  //MAYBE?  id = null;
   /*  userName = null;*/
   currentevent = null;
   currentloc = null;
@@ -28,13 +28,11 @@ export class KalendariumApiService {
     this.http.post<any>(`/event/addevent`, myformdata, {}).subscribe(results => {
       cb(results);
       console.log(results);
-
     });
   }
   ReadOneEventByID(eventId, cb) {
     this.http.get<any>(`/event/getevent/${eventId}`).subscribe(results => {
       cb(results);
-
     });
   }
   ReadAllPublicEvents(cb) {
@@ -78,7 +76,6 @@ export class KalendariumApiService {
     });
   }
 
-
   UpdateEvent(eventid, uid, eventname, isPrivate, locID, date) {
     let myformdata = new FormData();
     myformdata.append('eventid', eventid);
@@ -93,20 +90,17 @@ export class KalendariumApiService {
     });
   }
 
-
-
   DeleteLocation(Lid) {
     this.http.delete<any>(`/location/remove/${Lid}`, {}).subscribe(results => {
       console.log(results);
     });
   }
 
-
   DeleteEvent(eventID) {
     this.http.delete<any>(`/event/remove/${eventID}`).subscribe(result => {
       console.log(result);
     });
-  } 
+  }
 
   GetAllEventsWithLocation(cb) {
     this.http.get<any>('/location/withevent').subscribe(results => {

@@ -3,14 +3,13 @@ import { KalendariumApiService } from '../../Services/kalendarium-api.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { LoginService } from '../../Services/login.service';
 
-
 @Component({
   selector: 'app-event-detail',
   templateUrl: './event-detail.component.html',
   styleUrls: ['./event-detail.component.css']
 })
 export class EventDetailComponent {
-  displayedColumns: string[] = [ 'eventName', 'privateEvent', 'date', 'location','edit','delete'];
+  displayedColumns: string[] = ['eventName', 'privateEvent', 'date', 'location', 'edit', 'delete'];
 
   events = null;
   eventslist: KalendariumApiService = null;
@@ -28,10 +27,6 @@ export class EventDetailComponent {
     this.events = eventservice.oneevent;
   }
 
-
   ngOnInIt() {
   }
-
-
-
 }

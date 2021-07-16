@@ -3,9 +3,9 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { Console } from 'console';
 import { KalendariumApiService } from '../../Services/kalendarium-api.service';
 import { LoginService } from '../../Services/login.service';
-
 
 /**
  * @title Table with filtering
@@ -18,49 +18,30 @@ import { LoginService } from '../../Services/login.service';
 })
 
 export class EventListComponent {
-  displayedColumns: string[] = ['date', 'eventName', 'name','delete','edit'];
-
-  events = null;
-  eventslist: KalendariumApiService = null;
-
-  dataSource = new MatTableDataSource();
-  users = null;
+  displayedColumns: string[] = ['date', 'eventName', 'name', 'delete', 'edit'];
+  dataSource;
+  users;
   userslist: LoginService = null;
 
   constructor(private eventservice: KalendariumApiService, private userService: LoginService, private route: Router) {
-    this.eventslist = eventservice;
     this.userslist = userService;
-    this.showall();
+
+    this.eventservice.getAllEventsWithLocationAndUser(eventResult => {
+        this.dataSource = new MatTableDataSource(eventResult)
+  });
+
+    this.userService.GetAllUsers(userResult => this.users = userResult);
 
   }
 
   ngOnInIt() {
   }
 
-  showall() {
-    this.eventslist.getAllEventsWithLocationAndUser(eventresult => {
-      this.events = eventresult;
-      /*   console.log(this.events);*/
-    });
-  }
-  showuser() {
-    this.userslist.GetAllUsers(userresult => {
-      this.users = userresult;
-      /*    console.log(this.users);*/
-    });
-  }
 
-  //showevents() {
-  //  this.eventslist.getAllPublicEvents(eventresult => {
-  //    this.events = eventresult;
-  //    console.log(this.events);
-  //  });
-
-  //}
 
   public applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.events.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   //public EventClick(id) {
@@ -69,40 +50,34 @@ export class EventListComponent {
   //  });
   //}
 
-
-
   public CoworkerClick(firstName: string, lastName: string) {
     /*    alert(`Click works for ${firstName} ${lastName}:
 
         Eventually will show coworker details`)*/
   }
 
-
   OnDelete(eventID) {
-    console.log(eventID);
-    this.eventslist.DeleteEvent(eventID);
-
-    this.route.navigateByUrl('/user/usershowday');
+    this.eventservice.DeleteEvent(eventID);
+    this.eventservice.getAllEventsWithLocationAndUser(eventresult => {
+      this.dataSource =  new MatTableDataSource(eventresult);
+      });
+    // this.route.navigateByUrl('/user/usershowday');
   }
 
   EventClick(id) {
-
     this.eventservice.getOneEventWithLocationAndUser(id, eventresult => {
       console.log(eventresult);
       this.eventservice.oneevent = eventresult;
     });
     this.route.navigateByUrl('/event/details');
-
   }
 
   redirecttoedit(id) {
-
     this.eventservice.ReadOneEventByID(id, eventresult => {
       console.log('check to see if this is empty', eventresult);
       this.eventservice.oneevent = eventresult;
       console.log('still good?', this.eventservice.oneevent);
     });
     this.route.navigateByUrl('/event/edit');
-
   }
 }

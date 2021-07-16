@@ -22,18 +22,17 @@ import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { LoginComponent } from './Components/login/login.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 import { NewEventFormComponent } from './Components/new-event-form/new-event-form.component'
-import {ScrollingModule} from '@angular/cdk/scrolling';
-import {MatSortModule} from '@angular/material/sort';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatSortModule } from '@angular/material/sort';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { UpdateEventComponent } from './Components/update-event/update-event.component';
 import { FocResourcesComponent } from './Components/foc-resources/foc-resources.component';
-import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
-import {MatListModule} from '@angular/material/list';
-
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -55,7 +54,6 @@ import {MatListModule} from '@angular/material/list';
     UpdateEventComponent,
     FooterComponent,
     FocResourcesComponent,
-
 
   ],
   imports: [
@@ -94,18 +92,8 @@ import {MatListModule} from '@angular/material/list';
       { path: 'event/edit', component: UpdateEventComponent },
       { path: 'event/details', component: EventDetailComponent },
 
-
-
-
-
-
-
-
-
       /////////////////////////////////////////////////
-                       // DONT MOVE //
-
-
+      // DONT MOVE //
 
       { path: '**', component: PageNotFoundComponent },
     ]),

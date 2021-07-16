@@ -10,8 +10,6 @@ import { LoginService } from '../../Services/login.service';
 })
 /** update-event component*/
 export class UpdateEventComponent {
-
-  
   eventslist = null;
   userslist = null;
   event = '';
@@ -24,18 +22,13 @@ export class UpdateEventComponent {
     this.eventslist = eventservice;
     this.userslist = userService;
     this.setup();
-   
-
-
   }
   setup() {
-
     //this.date = this.eventservice.oneevent.dt_id;
     //this.event = this.eventservice.oneevent.name;
     //this.isPrivate = this.eventservice.oneevent.privateEvent;
     console.log('another check', this.eventservice.oneevent);
   }
-
 
   setAll() {
     this.checked = !this.checked;
@@ -48,7 +41,6 @@ export class UpdateEventComponent {
     }
   }
 
-
   onSubmit() {
     let newDate = `${this.date.getYear() + 1900}-${this.date.getMonth() + 1}-${this.date.getDate()}`;
     console.log(this.event, this.isPrivate, newDate);
@@ -56,5 +48,4 @@ export class UpdateEventComponent {
     this.eventservice.UpdateEvent(this.eventservice.oneevent.id, this.userService.currentuser.id, this.event, this.isPrivate, this.eventservice.oneevent.location_id, newDate);
     this.route.navigateByUrl('/user/usershowday');
   }
-
 }

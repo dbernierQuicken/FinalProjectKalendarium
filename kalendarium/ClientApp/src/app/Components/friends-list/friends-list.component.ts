@@ -12,11 +12,11 @@ export class FriendsListComponent {
   displayedColumns: string[] = ['coworker', 'department', 'location', 'hideEvent'];
   dataSource;
 
-constructor(private userService: LoginService){
-  this.userService.GetAllUsers( res =>{
-    this.dataSource = new MatTableDataSource(res) ;
-  })
-}
+  constructor(private userService: LoginService) {
+    this.userService.GetAllUsers(res => {
+      this.dataSource = new MatTableDataSource(res);
+    })
+  }
 
   public applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

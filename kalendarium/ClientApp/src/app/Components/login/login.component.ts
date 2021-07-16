@@ -23,19 +23,15 @@ export class LoginComponent {
         //console.log(this.logService.userresult[i]);
 
         if (this.logService.userresult[i].emailAddress == this.emailaddress) {
-
           if (this.password == this.logService.userresult[i].password) {
             this.logService.currentuser = this.logService.userresult[i];
             console.log(this.logService.currentuser.firstName);
             this.route.navigateByUrl('/user/usershowday');
             return;
           }
-
         }
-
       }
       alert('Wrong Credentials. Try Again.')
-
     });
   }
 }

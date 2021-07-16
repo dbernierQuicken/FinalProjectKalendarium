@@ -1,1 +1,20 @@
-﻿
+.example-form {
+  position: relative;
+  justify-content: center;
+  right: -20rem;
+  width: 50%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.submit {
+  font-weight: bolder;
+  font-size: 1rem;
+}
+
+.update-event {
+  padding-top: 5rem;
+  max-height: 87.5vh;
+}

@@ -1,4 +1,3 @@
-
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from '../../Services/login.service';
@@ -19,7 +18,6 @@ export class SignUpComponent {
   currentuser = null;
 
   constructor(private logService: LoginService, private route: Router) {
-
   }
 
   OnSubmit() {
@@ -56,13 +54,12 @@ export class SignUpComponent {
     this.logService.getUserByEmail(this.emailaddress, userresult => {
       //this.currentuser = userresult;
     });
-    
+
     //this.logService.username = this.emailaddress; }
     //console.log(this.currentuser);
     //this.logService.currentuser = this.currentuser;
-    
+
     console.log('hey check this out', this.logService.currentuser);
     this.route.navigateByUrl('/user/login');
   }
-
 }

@@ -1,29 +1,32 @@
-<br />
-<br />
-<mat-card>
-<form class="example-form">
-  <!--  <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Department</mat-label>
-      <input matInput value="">
-    </mat-form-field>-->
+<div class="login-comp">
+  <h3>User Login</h3>
+  <mat-card>
+    <form class="example-form">
+      <!--  <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Department</mat-label>
+          <input matInput value="">
+        </mat-form-field>-->
 
-  <table class="example-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Email Address</mat-label>
-          <input matInput [(ngModel)]="emailaddress" name="emailaddress" type="email" required/>
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Password</mat-label>
-          <input matInput [(ngModel)]="password" name="password" type="password" required/>
-        </mat-form-field>
-      </td>
-    </tr>
-  </table>
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Email Address</mat-label>
+              <input matInput [(ngModel)]="emailaddress" name="emailaddress" type="email" required />
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Password</mat-label>
+              <input matInput [(ngModel)]="password" name="password" type="password" required />
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
 
-  <button mat-raised-button color="primary"  (click)="OnSubmit()">  Submit</button>
-</form>
-</mat-card>
+      <button class="submit" mat-raised-button color="primary" (click)="OnSubmit()">  Submit</button>
+    </form>
+  </mat-card>
+</div>

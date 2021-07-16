@@ -1,10 +1,6 @@
 ﻿using kalendarium.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace kalendarium.Controllers
 {
@@ -13,7 +9,7 @@ namespace kalendarium.Controllers
     public class LocationController : ControllerBase
     {
         [HttpPost("add")]
-        public bool AddLocation ([FromForm] string ccity, [FromForm] string sstate, [FromForm] string sstreet, [FromForm] string zzip)
+        public bool AddLocation([FromForm] string ccity, [FromForm] string sstate, [FromForm] string sstreet, [FromForm] string zzip)
         {
             DAL.AddLocation(ccity, sstate, sstreet, zzip);
             return true;
@@ -27,7 +23,7 @@ namespace kalendarium.Controllers
         }
 
         [HttpPut("update/{Lid}/{Lcity}/{Lstate}/{Lstreet}/{Lzip}")]
-        public bool UpdateLocation (int Lid, string Lcity, string Lstate, string Lstreet, string Lzip)
+        public bool UpdateLocation(int Lid, string Lcity, string Lstate, string Lstreet, string Lzip)
         {
             Location toUpdate = new Location() { id = Lid, city = Lcity, state = Lstate, street = Lstate, zip = Lzip };
             DAL.EditLocation(toUpdate);
@@ -35,17 +31,16 @@ namespace kalendarium.Controllers
         }
 
         [HttpDelete("remove/{id}")]
-        public bool DeleteLocation (int id)
+        public bool DeleteLocation(int id)
         {
             DAL.DeleteLocation(id);
             return true;
         }
 
         [HttpGet("withevent")]
-        public  List<Join> GetAllEventsWithLocation()
+        public List<Join> GetAllEventsWithLocation()
         {
             return DAL.GetAllEventsWithLocation();
         }
-
     }
 }

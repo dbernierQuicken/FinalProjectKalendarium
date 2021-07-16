@@ -1,58 +1,57 @@
 .example-spacer {
   flex: 1 1 auto;
- /*  z-index: 1; */
-
+  /*  z-index: 1; */
 }
 
-.tool-bar{
-width: 98.45%;
- position: fixed;
+.tool-bar {
+  width: 98,44%;
+  position: fixed;
   position: -webkit-fixed;
   top: 0; /* required */
   color: #fff;
   z-index: 500;
 }
-.expand-menu{
-  background-color:  rgba(251, 250, 245);
+
+.expand-menu {
+  background-color: rgba(251, 250, 245);
   width: 150px !important;
 }
-a{
+
+a {
   text-decoration: none;
-
-
 }
-.app-name{
+
+.app-name {
   position: absolute;
   bottom: 1rem;
   font-weight: bolder;
   font-size: 2.5rem;
 }
 
-.bold-link{
+.bold-link {
   position: absolute;
   font-weight: 500;
   font-size: 1rem;
   top: .25rem;
 }
 
-mat-icon{
+mat-icon {
   font-size: 2rem;
 }
-.menu-icon{
+
+.menu-icon {
   position: absolute;
   font-size: 4rem;
   right: 1.75rem;
   top: 0.4rem;
 }
 /* overrides the material ui css */
-::ng-deep .mat-menu-content{
+::ng-deep .mat-menu-content {
   /* overrides the material ui css */
   width: 150px !important;
 }
 
-
-
-.kraken-logo{
+.kraken-logo {
   position: relative;
   top: 0.3rem;
   fill: white;

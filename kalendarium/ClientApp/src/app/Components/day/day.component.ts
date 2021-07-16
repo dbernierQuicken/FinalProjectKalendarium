@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./day.component.css']
 })
 export class DayComponent implements OnInit {
-
   displayedColumns: string[] = ['id', 'eventName', 'privateEvent', 'date', 'location', 'edit', 'delete'];
 
   events = null;
@@ -22,19 +21,13 @@ export class DayComponent implements OnInit {
   users = null;
   userslist: LoginService = null;
 
-
-
   constructor(private eventservice: KalendariumApiService, private userService: LoginService, private route: Router) {
     this.eventslist = eventservice;
     this.userslist = userService;
     this.showtoday();
   }
 
-
   ngOnInit(): void {
-
-
-
   }
 
   showall() {
@@ -45,13 +38,11 @@ export class DayComponent implements OnInit {
   }
 
   showtoday() {
-
     this.eventslist.getEventsForToday(this.userslist.currentuser.id, eventresult => {
       this.events = eventresult;
       console.log(this.events);
     });
   }
-
 
   OnDelete(eventID) {
     console.log(eventID);
@@ -60,12 +51,11 @@ export class DayComponent implements OnInit {
     this.route.navigateByUrl('/user/usershowday');
   }
   /*
-   * Work On this later 
+   * Work On this later
   updateEvent(eventID) {
     console.log(eventID);
-    this.eventslist.UpdateEvent. 
+    this.eventslist.UpdateEvent.
   } */
-
 
   showuser() {
     this.userslist.GetAllUsers(userresult => {
@@ -75,15 +65,10 @@ export class DayComponent implements OnInit {
   }
 
   redirecttoedit(id) {
-
     this.eventservice.ReadOneEventByID(id, eventresult => {
       console.log(eventresult);
       this.eventservice.oneevent = eventresult;
     });
     this.route.navigateByUrl('/event/edit');
-
   }
-
-
-
 }

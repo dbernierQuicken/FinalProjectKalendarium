@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Dapper.Contrib.Extensions;
+﻿using Dapper.Contrib.Extensions;
 
 namespace kalendarium.Models
 {
@@ -11,6 +7,7 @@ namespace kalendarium.Models
     {
         [Key]
         public int id { get; set; }
+
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string emailAddress { get; set; }
