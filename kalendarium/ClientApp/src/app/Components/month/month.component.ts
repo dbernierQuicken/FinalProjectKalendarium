@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { KalendariumApiService } from '../../Services/kalendarium-api.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-month',
@@ -12,14 +13,15 @@ export class MonthComponent {
   displayedColumns: string[] = ['date', 'monthName', 'dayName', 'holiday', 'payDay','eventsList', 'weekend'];
   dataSource;
 
-  constructor(private calendarService: KalendariumApiService) {
+  constructor(private calendarService: KalendariumApiService, private route: Router) {
     this.calendarService.GetTheCalendar(calResult => {
       this.dataSource = new MatTableDataSource(calResult);
   })
 }
 
-  public AddEvent() {
-    alert("TEST CLICK")
+  public AddEvent(id) {
+    this.calendarService.currentdate = id;
+    this.route.navigateByUrl('/events/addEvent');
   }
 
   public applyFilter(event: Event) {

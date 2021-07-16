@@ -13,6 +13,7 @@ export class KalendariumApiService {
   /*  userName = null;*/
   currentevent = null;
   currentloc = null;
+  currentdate = null;
 
   constructor(theHttp: HttpClient) {
     this.http = theHttp;
