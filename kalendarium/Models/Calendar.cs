@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Dapper.Contrib.Extensions;
+﻿using Dapper.Contrib.Extensions;
+using System;
 
 namespace kalendarium.Models
 {
@@ -11,6 +8,7 @@ namespace kalendarium.Models
     {
         [Key]
         public DateTime dt { get; set; }
+
         public int y { get; set; }
         public int q { get; set; }
         public int m { get; set; }
@@ -23,6 +21,5 @@ namespace kalendarium.Models
         public bool isHoliday { get; set; }
         public bool isPayday { get; set; }
         public string holidayDescr { get; set; }
-
     }
 }

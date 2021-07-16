@@ -1,7 +1,6 @@
-.friends-list-comp{
+.friends-list-comp {
   padding-top: 5rem;
 }
-
 
 table {
   width: 100%;
@@ -16,30 +15,26 @@ table {
   font-weight: bolder;
 } */
 
-th{
+th {
   /*   position: sticky; */
-    background-color: #5866b1d2;
-    color: white;
-    font-size: 1.33rem;
-     font-weight: bolder;
-  }
+  background-color: #5866b1d2;
+  color: white;
+  font-size: 1.33rem;
+  font-weight: bolder;
+}
 
-
-.hide-event-button{
+.hide-event-button {
   line-height: 23px;
   font-weight: bolder;
   font-size: 1rem;
-
 }
 
-
-
-.user-button{
+.user-button {
   font-weight: bolder;
   font-size: 1rem;
 }
 
-p{
+p {
   font-weight: bolder;
   font-size: 1rem;
 }

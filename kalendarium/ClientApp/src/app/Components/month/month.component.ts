@@ -10,14 +10,14 @@ import { Router } from '@angular/router';
 })
 
 export class MonthComponent {
-  displayedColumns: string[] = ['date', 'monthName', 'dayName', 'holiday', 'payDay','eventsList', 'weekend'];
+  displayedColumns: string[] = ['date', 'monthName', 'dayName', 'holiday', 'payDay', 'eventsList', 'weekend'];
   dataSource;
 
   constructor(private calendarService: KalendariumApiService, private route: Router) {
     this.calendarService.GetTheCalendar(calResult => {
       this.dataSource = new MatTableDataSource(calResult);
-  })
-}
+    })
+  }
 
   public AddEvent(id) {
     this.calendarService.currentdate = id;

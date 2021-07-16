@@ -1,98 +1,93 @@
 <div class="month-comp-div">
-<h3>Calendar</h3>
-<ng-container *ngIf="dataSource">
-  <mat-form-field appearance="standard">
-    <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Fiter Calendar" #input>
-  </mat-form-field>
-</ng-container>
-<table mat-table matSort table-striped sticky-header [dataSource]="dataSource" class="mat-elevation-z8">
-
-  <!-- Date Column -->
-  <ng-container matColumnDef="date">
-    <th mat-header-cell *matHeaderCellDef color="primary" > Date </th>
-    <td mat-cell *matCellDef="let element">
-      <p>
-      {{element.dt.slice(0, -9) }}
-
-      <span *ngIf="element.isWeekday == false" class="weekend">
-        --  Weekend
-      </span>
-    </p>
-    </td>
+  <h3>Calendar</h3>
+  <ng-container *ngIf="dataSource">
+    <mat-form-field appearance="standard">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Fiter Calendar" #input>
+    </mat-form-field>
   </ng-container>
+  <table mat-table matSort table-striped sticky-header [dataSource]="dataSource" class="mat-elevation-z8">
 
-  <!-- Month Column -->
-  <ng-container matColumnDef="monthName">
-    <th mat-header-cell *matHeaderCellDef > Month </th>
-    <td mat-cell *matCellDef="let element" >
-      <P Class="light-font">
-      {{element.monthName}}
-    </P>
-    </td>
-  </ng-container>
+    <!-- Date Column -->
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef color="primary"> Date </th>
+      <td mat-cell *matCellDef="let element">
+        <p>
+          {{element.dt.slice(0, -9) }}
 
-  <!-- Day Column -->
-  <ng-container matColumnDef="dayName">
-    <th mat-header-cell *matHeaderCellDef> Day </th>
-    <td mat-cell *matCellDef="let element">
-      <P  Class="light-font">{{element.dayName}}</P>
-    </td>
-  </ng-container>
+          <span *ngIf="element.isWeekday == false" class="weekend">
+            --  Weekend
+          </span>
+        </p>
+      </td>
+    </ng-container>
 
+    <!-- Month Column -->
+    <ng-container matColumnDef="monthName">
+      <th mat-header-cell *matHeaderCellDef> Month </th>
+      <td mat-cell *matCellDef="let element">
+        <P Class="light-font">
+          {{element.monthName}}
+        </P>
+      </td>
+    </ng-container>
 
+    <!-- Day Column -->
+    <ng-container matColumnDef="dayName">
+      <th mat-header-cell *matHeaderCellDef> Day </th>
+      <td mat-cell *matCellDef="let element">
+        <P Class="light-font">{{element.dayName}}</P>
+      </td>
+    </ng-container>
 
-  <!-- holiday Column -->
-  <ng-container matColumnDef="holiday">
-    <th mat-header-cell *matHeaderCellDef> Holiday </th>
-    <td mat-cell *matCellDef="let element">
-      <span *ngIf="element.isHoliday == true">
-        {{element.holidayDescr}}
-      </span>
-    </td>
-  </ng-container>
+    <!-- holiday Column -->
+    <ng-container matColumnDef="holiday">
+      <th mat-header-cell *matHeaderCellDef> Holiday </th>
+      <td mat-cell *matCellDef="let element">
+        <span *ngIf="element.isHoliday == true">
+          {{element.holidayDescr}}
+        </span>
+      </td>
+    </ng-container>
 
+    <!-- payday Column -->
+    <ng-container matColumnDef="payDay">
+      <th mat-header-cell *matHeaderCellDef> Pay Day</th>
+      <td mat-cell *matCellDef="let element">
+        <div *ngIf="element.d % 14 == 0">
+          <button mat-raised-button color="accent" class="payDay">Pay Day</button>
+        </div>
+      </td>
+    </ng-container>
 
-
-  <!-- payday Column -->
-  <ng-container matColumnDef="payDay">
-    <th mat-header-cell *matHeaderCellDef> Pay Day</th>
-    <td mat-cell *matCellDef="let element">
-      <div *ngIf="element.d % 14 == 0" >
-        <button mat-raised-button color="accent" class="payDay">Pay Day</button>
-      </div>
-    </td>
-  </ng-container>
-
-      <!-- events Column -->
-      <ng-container matColumnDef="eventsList">
-        <th mat-header-cell *matHeaderCellDef> Days Events </th>
-        <td mat-cell *matCellDef="let element">
-          <div *ngIf="element">
-            <button mat-raised-button color="accent"  (click)="AddEvent(element.dt)">
+    <!-- events Column -->
+    <ng-container matColumnDef="eventsList">
+      <th mat-header-cell *matHeaderCellDef> Days Events </th>
+      <td mat-cell *matCellDef="let element">
+        <div *ngIf="element">
+          <button mat-raised-button color="accent" (click)="AddEvent(element.dt)">
             Add Event
           </button>
         </div>
+      </td>
+    </ng-container>
 
-        </td>
-      </ng-container>
+    <!-- weekend Column -->
+    <ng-container matColumnDef="weekend">
+      <th mat-header-cell *matHeaderCellDef style="display:none;"> Weekend</th>
+      <td mat-cell *matCellDef="let element" style="display:none;">
+        <span *ngIf="element.isWeekday == false" class="weekend">
+          Weekend
+        </span>
+      </td>
+    </ng-container>
+    <h1>{{dataSource.filter.value}}</h1>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
-  <!-- weekend Column -->
-  <ng-container matColumnDef="weekend">
-    <th mat-header-cell *matHeaderCellDef style="display:none;"> Weekend</th>
-    <td mat-cell *matCellDef="let element" style="display:none;">
-      <span *ngIf="element.isWeekday == false" class="weekend">
-        Weekend
-      </span>
-    </td>
-  </ng-container>
-  <h1>{{dataSource.filter.value}}</h1>
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-  <!-- Row shown when there is no matching data. -->
-  <tr class="mat-row" *matNoDataRow>
-    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-  </tr>
-</table>
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
 </div>

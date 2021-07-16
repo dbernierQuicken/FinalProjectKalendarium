@@ -1,24 +1,19 @@
 ﻿using kalendarium.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
 
 namespace kalendarium.Controllers
 {
-    [Route("event")] 
+    [Route("event")]
     [ApiController]
     public class EventController : ControllerBase
     {
-
         [HttpPost("addevent")]
         public Event MakeNewEvent([FromForm] int userID, [FromForm] string eventName, [FromForm] bool isPrivate, [FromForm] DateTime dateID)
         {
             return DAL.MakeNewEvent(userID, eventName, isPrivate, dateID);
-            
         }
 
         [HttpGet("getevent/{eventId}")]
@@ -30,12 +25,11 @@ namespace kalendarium.Controllers
         [HttpGet("public")]
         public List<Event> ReadAllPublicEvents()
         {
-
             return DAL.ReadAllPublicEvents();
         }
 
         [HttpGet("readcoworker")]
-        public  List<Event> ReadAllCoworkerPublicEvents(int coworkerID)
+        public List<Event> ReadAllCoworkerPublicEvents(int coworkerID)
         {
             return DAL.ReadAllCoworkerPublicEvents(coworkerID).ToList();
         }
@@ -53,21 +47,18 @@ namespace kalendarium.Controllers
             return DAL.EventsByDay(date, user_id).ToList();
         }
 
-
         [HttpGet("byuser")]
-        public  List<Event> ReadAllEventsByUser(int userID)
+        public List<Event> ReadAllEventsByUser(int userID)
         {
             return DAL.ReadAllEventsByUser(userID).ToList();
         }
 
-
         [HttpPost("update")]
-        public  Event UpdateEvent([FromForm] int eventid, [FromForm] int uid,[FromForm] string eventname, [FromForm] bool isPrivate, [FromForm] int locID, [FromForm] DateTime date)
+        public Event UpdateEvent([FromForm] int eventid, [FromForm] int uid, [FromForm] string eventname, [FromForm] bool isPrivate, [FromForm] int locID, [FromForm] DateTime date)
         {
             Event toUpdate = new Event() { id = eventid, name = eventname, privateEvent = isPrivate, location_id = locID, user_id = uid, dt_id = date };
             DAL.UpdateEvent(toUpdate);
             return toUpdate;
-        
         }
 
         [HttpDelete("remove/{eventId}")]
@@ -76,7 +67,7 @@ namespace kalendarium.Controllers
             DAL.DeleteEvent(eventID);
             return true;
         }
-     
+
         [HttpGet("GetAllwithEventandUser")]
         public List<JoinEventUserLocation> GetAllEventsWithLocationAndUser()
         {
@@ -88,12 +79,8 @@ namespace kalendarium.Controllers
         {
             return DAL.GetOneEventsWithLocationAndUser(eventID);
         }
-
-
     }
 }
-
-
 
 /* [HttpGet]
        public async Task<string> GetAll()

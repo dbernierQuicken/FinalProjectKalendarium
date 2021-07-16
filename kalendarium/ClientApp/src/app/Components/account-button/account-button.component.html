@@ -1,5 +1,5 @@
 <ng-container *ngIf="this.logService.currentuser">
-  <span>{{this.logService.currentuser.firstName}} {{this.logService.currentuser.lastName}} &nbsp;&nbsp;</span>
+  <span class="user-name-nav">{{this.logService.currentuser.firstName}} {{this.logService.currentuser.lastName}} &nbsp;&nbsp;</span>
 </ng-container>
 
 <button mat-icon-button [matMenuTriggerFor]="menu">
@@ -26,4 +26,3 @@
     </button>
   </a>
 </mat-menu>
-

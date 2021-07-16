@@ -7,15 +7,9 @@ import { LoginService } from '../../Services/login.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-
-
   constructor(private logService: LoginService) {
-
   }
 
   ngOnInit(): void {
   }
-
 }
-
-

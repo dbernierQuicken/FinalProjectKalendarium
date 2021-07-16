@@ -1,10 +1,10 @@
-﻿footer {
+footer {
   display: flex;
   position: fixed;
   justify-content: center;
-  background-color: rgba(44, 41, 41, 0.815);
+  background-color: rgba(12, 11, 11, 0.911);
   width: 98.3%;
   height: 4rem;
- bottom: 0rem;
+  bottom: 0rem;
   flex-shrink: 0;
 }

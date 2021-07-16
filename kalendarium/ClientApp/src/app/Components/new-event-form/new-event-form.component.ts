@@ -1,26 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
-
 
 import { Router } from '@angular/router';
 import { KalendariumApiService } from '../../Services/kalendarium-api.service';
 import { LoginService } from '../../Services/login.service';
 
 @Component({
-    selector: 'app-new-event-form',
-    templateUrl: './new-event-form.component.html',
-    styleUrls: ['./new-event-form.component.css']
+  selector: 'app-new-event-form',
+  templateUrl: './new-event-form.component.html',
+  styleUrls: ['./new-event-form.component.css']
 })
 /** NewEventForm component*/
 export class NewEventFormComponent implements OnInit {
-
   eventslist = null;
   userslist = null;
   event = '';
   date = null;
   isPrivate: boolean = false;
+
   street = '';
   city = '';
   state = '';
@@ -46,7 +45,7 @@ export class NewEventFormComponent implements OnInit {
     this.userslist = userService;
     this.date = this.eventservice.currentdate;
 
-
+    console.log(this.state);
   }
 
   setAll() {
@@ -60,20 +59,65 @@ export class NewEventFormComponent implements OnInit {
     }
   }
 
+  // onSubmit() {
+  //   let newDate = `${this.date.getYear()+1900}-${this.date.getMonth()+1}-${this.date.getDate()}`;
+  //   // console.log(this.event, newDate, this.userslist.currentuser.id, this.isPrivate);
+  //   //console.log(this.isprivate);
+
+  //   this.eventservice.MakeNewEvent(this.userslist.currentuser.id, this.event, this.isPrivate, newDate, eventresult => {
+  //     this.eventservice.currentevent = eventresult;
+
+  //   // console.log('this one: ', this.eventservice.currentevent);
+  //   // console.log(this.street, this.city, this.state, this.zip);
+  //   });
+  //   this.eventservice.AddLocation(this.city, this.state, this.street, this.zip, locationresult => {
+  //     console.log(this.city)
+  //     this.eventservice.currentloc = locationresult;
+  //     debugger
+
+  //     console.log('this is the location', this.eventservice.currentloc);
+  //   this.route.navigateByUrl('/events/addEvent');
+  //     this.eventservice.UpdateEvent(this.eventservice.currentevent.id, this.event, this.isPrivate, newDate, this.eventservice.currentloc.id, this.userslist.currentuser.id);
+  //   });
+
+  //   //this.route.navigateByUrl('/user/usershowday');
+  // }
+
+  streetInput(event: Event) {
+    let input = (event.target as HTMLInputElement).value;
+    this.street = input;
+    console.log(this.state);
+  }
+
+  cityInput(event: Event) {
+    let input = (event.target as HTMLInputElement).value;
+    this.city = input;
+    console.log(this.state);
+  }
+
+  stateInput(event: Event) {
+    let input = (event.target as HTMLInputElement).value;
+    this.state = input;
+    console.log(this.state);
+  }
+
+  zipInput(event: Event) {
+    let input = (event.target as HTMLInputElement).value;
+    this.zip = input
+    console.log(this.state)
+  }
 
   onSubmit() {
-    let newDate = `${this.date.getYear()+1900}-${this.date.getMonth()+1}-${this.date.getDate()}`;
-    console.log(this.event, newDate, this.userslist.currentuser.id, this.isPrivate);
-    //console.log(this.isprivate);
+    let newDate = `${this.date.getYear() + 1900}-${this.date.getMonth() + 1}-${this.date.getDate()}`;
+
     this.eventservice.MakeNewEvent(this.userslist.currentuser.id, this.event, this.isPrivate, newDate, eventresult => {
       this.eventservice.currentevent = eventresult;
-    console.log('this one: ', this.eventservice.currentevent);
-    console.log(this.street, this.city, this.state, this.zip);
     });
+
     this.eventservice.AddLocation(this.city, this.state, this.street, this.zip, locationresult => {
       this.eventservice.currentloc = locationresult;
-      console.log('this is the location', this.eventservice.currentloc);
-    this.route.navigateByUrl('/events/addEvent');
+
+      this.route.navigateByUrl('/events/addEvent');
       this.eventservice.UpdateEvent(this.eventservice.currentevent.id, this.event, this.isPrivate, newDate, this.eventservice.currentloc.id, this.userslist.currentuser.id);
     });
 
@@ -83,8 +127,8 @@ export class NewEventFormComponent implements OnInit {
   ngOnInit() {
     this.filteredStates = this.control.valueChanges.pipe(
       startWith(''),
-        map(value => this._filter(value))
-      );
+      map(value => this._filter(value))
+    );
   }
   private _filter(value: string): string[] {
     const filterValue = this._normalizeValue(value);
