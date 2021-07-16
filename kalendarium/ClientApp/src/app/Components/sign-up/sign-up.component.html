@@ -2,50 +2,57 @@
 <br />
 <br />
 <mat-card>
-<form class="example-form">
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Department</mat-label>
-    <input matInput [(ngModel)]="dept" name="dept" />
-  </mat-form-field> <table class="example-full-width" cellspacing="0">
-    <tr>
-      <td>
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>First name</mat-label>
-          <input matInput [(ngModel)]="firstname" name="firstname" />
-        </mat-form-field>
-      </td>
-      <td>
-        <mat-form-field class="example-full-width" appearance="fill">
-          <mat-label>Last Name</mat-label>
-          <input matInput [(ngModel)]="lastname" name="lastname" />
-        </mat-form-field>
-      </td>
+  <form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Department</mat-label>
+      <input matInput [(ngModel)]="dept" name="dept" required/>
+    </mat-form-field> <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>First name</mat-label>
+            <input matInput [(ngModel)]="firstname" name="firstname" required/>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input matInput [(ngModel)]="lastname" name="lastname" required/>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+    <!--<table class="example-full-width" cellspacing="0">
+    <tr> <td>
+    <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Sift Profile URL</mat-label>
+    <input matInput>
+    </mat-form-field>
+    </td>
+    <td>
+    <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Phone Number</mat-label>
+    <input matInput />
+    </mat-form-field>
+    </td>
     </tr>
-  </table>
-  <!--<table class="example-full-width" cellspacing="0">
-  <tr> <td>
-  <mat-form-field class="example-full-width" appearance="fill">
-  <mat-label>Sift Profile URL</mat-label>
-  <input matInput>
-  </mat-form-field>
-  </td>
-  <td>
-  <mat-form-field class="example-full-width" appearance="fill">
-  <mat-label>Phone Number</mat-label>
-  <input matInput />
-  </mat-form-field>
-  </td>
-  </tr>
-  </table>-->
-  <p>
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Email Address</mat-label>
-      <input matInput [(ngModel)]="emailaddress" name="emailaddress" />
-    </mat-form-field>
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Password</mat-label>
-      <input matInput [(ngModel)]="password" name="password" />
-    </mat-form-field>
-  </p> <button mat-raised-button color="primary"  (click)="OnSubmit()"> Submit</button>
-</form>
+    </table>-->
+    <p>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Email Address</mat-label>
+        <input matInput [(ngModel)]="emailaddress" name="emailaddress" type="email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" required />
+        <!--<input type="email" name="email" ngModel email>
+        <input type="email" name="email" ngModel email="true">
+        <input type="email" name="email" ngModel [email]="true">-->
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput [(ngModel)]="password" name="password" type="password" required/>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput [(ngModel)]="confPassword" name="confPassword" type="password" required/>
+      </mat-form-field>
+    </p> <button mat-raised-button color="primary" (click)="OnSubmit()"> Submit</button>
+  </form>
 </mat-card>
