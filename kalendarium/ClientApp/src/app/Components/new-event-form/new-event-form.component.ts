@@ -114,12 +114,12 @@ export class NewEventFormComponent implements OnInit {
       this.eventservice.currentevent = eventresult;
     });
 
-    this.eventservice.AddLocation(this.city, this.state, this.street, this.zip, locationresult => {
-      this.eventservice.currentloc = locationresult;
+    //this.eventservice.AddLocation(this.city, this.state, this.street, this.zip, locationresult => {
+      //this.eventservice.currentloc = locationresult;
 
-      this.route.navigateByUrl('/events/addEvent');
-      this.eventservice.UpdateEvent(this.eventservice.currentevent.id, this.event, this.isPrivate, newDate, this.eventservice.currentloc.id, this.userslist.currentuser.id);
-    });
+      //this.route.navigateByUrl('/events/addEvent');
+      //this.eventservice.UpdateEvent(this.eventservice.currentevent.id, this.event, this.isPrivate, newDate, this.eventservice.currentloc.id, this.userslist.currentuser.id);
+    //});
 
     this.route.navigateByUrl('/user/usershowday');
   }

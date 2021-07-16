@@ -71,4 +71,10 @@ export class DayComponent implements OnInit {
     });
     this.route.navigateByUrl('/event/edit');
   }
+
+  setLocation(wholeEvent) {
+    this.eventservice.currentevent = wholeEvent;
+    console.log('checking', this.eventservice.currentevent);
+    this.route.navigateByUrl('location');
+  }
 }

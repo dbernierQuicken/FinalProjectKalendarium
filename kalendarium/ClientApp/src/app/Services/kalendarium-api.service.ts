@@ -51,12 +51,12 @@ export class KalendariumApiService {
     });
   }
 
-  AddLocation(city, state, street, zip, cb) {
+  AddLocation(ccity, sstate, sstreet, zzip, cb) {
     let myformdata = new FormData();
-    myformdata.append('city', city);
-    myformdata.append('state', state);
-    myformdata.append('street', street);
-    myformdata.append('zip', zip);
+    myformdata.append('ccity', ccity);
+    myformdata.append('sstate', sstate);
+    myformdata.append('sstreet', sstreet);
+    myformdata.append('zzip', zzip);
     this.http.post<any>(`/location/add`, myformdata, {
     }).subscribe(results => {
       cb(results);
@@ -72,6 +72,15 @@ export class KalendariumApiService {
     myformdata.append('Lzip', Lzip);
     this.http.put<any>(`/location/update`, myformdata, {
     }).subscribe(results => {
+      console.log(results);
+    });
+  }
+
+  addLoctoEvent(eventid, locid) {
+    let myformdata = new FormData();
+    myformdata.append('eventid', eventid);
+    myformdata.append('locid', locid);
+    this.http.put<any>(`/event/addLoc`, myformdata, {}).subscribe(results => {
       console.log(results);
     });
   }
