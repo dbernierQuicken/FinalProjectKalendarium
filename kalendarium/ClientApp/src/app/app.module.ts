@@ -33,6 +33,7 @@ import { UpdateEventComponent } from './Components/update-event/update-event.com
 import { FocResourcesComponent } from './Components/foc-resources/foc-resources.component';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatListModule } from '@angular/material/list';
+import { LocationComponent } from './Components/location/location.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { MatListModule } from '@angular/material/list';
     UpdateEventComponent,
     FooterComponent,
     FocResourcesComponent,
+    LocationComponent,
 
   ],
   imports: [
@@ -91,7 +93,7 @@ import { MatListModule } from '@angular/material/list';
       { path: 'calendar/getCal', component: MonthComponent },
       { path: 'event/edit', component: UpdateEventComponent },
       { path: 'event/details', component: EventDetailComponent },
-
+      { path: 'location', component: LocationComponent },
       /////////////////////////////////////////////////
       // DONT MOVE //
 

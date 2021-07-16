@@ -61,6 +61,14 @@ namespace kalendarium.Controllers
             return toUpdate;
         }
 
+        [HttpPut("addLoc")]
+        public bool AddLoctoEvent([FromForm] int eventid, [FromForm] int locid)
+        {
+            DAL.AddLoctoEvent(eventid, locid);
+            return true;
+
+        }
+
         [HttpDelete("remove/{eventId}")]
         public bool DeleteEvent(int eventID)
         {

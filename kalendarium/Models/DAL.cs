@@ -160,10 +160,14 @@ namespace kalendarium.Models
         {
             return db.Query<Join>("SELECT event.*, location.city, location.state, location.street, location.zip FROM event Left JOIN location ON event.location_id=location.id where privateEvent = false").ToList();
         }
-
-        public static Location AddLocation(string ccity, string sstate, string sstreet, string zzip)
+        public static bool AddLoctoEvent(int eventid, int locid)
         {
-            Location aLocation = new Location() { city = ccity, state = sstate, street = sstreet, zip = zzip };
+            db.Query<Event>($"update event set location_id = {locid} where id = {eventid}");
+            return true;
+        }
+        public static Location AddLocation(Location aLocation)
+        {
+            
             db.Insert(aLocation);
             return aLocation;
         }

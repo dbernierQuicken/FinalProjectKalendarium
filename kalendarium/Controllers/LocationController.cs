@@ -9,10 +9,11 @@ namespace kalendarium.Controllers
     public class LocationController : ControllerBase
     {
         [HttpPost("add")]
-        public bool AddLocation([FromForm] string ccity, [FromForm] string sstate, [FromForm] string sstreet, [FromForm] string zzip)
+        public Location AddLocation([FromForm] string ccity, [FromForm] string sstate, [FromForm] string sstreet, [FromForm] string zzip)
         {
-            DAL.AddLocation(ccity, sstate, sstreet, zzip);
-            return true;
+            Location aLocation = new Location() { city = ccity, state = sstate, street = sstreet, zip = zzip };
+            DAL.AddLocation(aLocation);
+            return aLocation;
         }
 
         [HttpGet("by/{id}")]
