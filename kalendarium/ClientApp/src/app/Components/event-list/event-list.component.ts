@@ -18,7 +18,7 @@ import { LoginService } from '../../Services/login.service';
 })
 
 export class EventListComponent {
-  displayedColumns: string[] = ['name', 'eventName', 'privateEvent', 'date','delete','edit'];
+  displayedColumns: string[] = ['date', 'eventName', 'name','delete','edit'];
 
   events = null;
   eventslist: KalendariumApiService = null;
@@ -98,8 +98,9 @@ export class EventListComponent {
   redirecttoedit(id) {
 
     this.eventservice.ReadOneEventByID(id, eventresult => {
-      console.log(eventresult);
+      console.log('check to see if this is empty', eventresult);
       this.eventservice.oneevent = eventresult;
+      console.log('still good?', this.eventservice.oneevent);
     });
     this.route.navigateByUrl('/event/edit');
 

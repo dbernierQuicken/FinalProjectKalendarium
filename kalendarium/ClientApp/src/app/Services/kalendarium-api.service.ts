@@ -34,6 +34,7 @@ export class KalendariumApiService {
   ReadOneEventByID(eventId, cb) {
     this.http.get<any>(`/event/getevent/${eventId}`).subscribe(results => {
       cb(results);
+
     });
   }
   ReadAllPublicEvents(cb) {
