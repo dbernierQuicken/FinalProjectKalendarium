@@ -3,7 +3,6 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { Console } from 'console';
 import { KalendariumApiService } from '../../Services/kalendarium-api.service';
 import { LoginService } from '../../Services/login.service';
 
