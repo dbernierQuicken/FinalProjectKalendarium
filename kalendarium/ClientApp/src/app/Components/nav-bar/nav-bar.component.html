@@ -1,4 +1,4 @@
- <mat-toolbar color="primary" class="tool-bar" >
+<mat-toolbar color="primary" class="tool-bar">
 
   <button mat-icon-button [matMenuTriggerFor]="menu">
     <mat-icon>menu</mat-icon>
@@ -6,7 +6,7 @@
   <mat-menu #menu="matMenu" class="expand-menu">
 
     <a routerLink="/events/getallevents">
-      <button   mat-menu-item>
+      <button mat-menu-item>
         <mat-icon color="accent"> view_list</mat-icon>
         <span>Event List </span>
       </button>
@@ -35,7 +35,13 @@
       </button>
     </a>
   </mat-menu>
-  <span> &nbsp;&nbsp; Kalendarium</span>
+  <span>
+    &nbsp;&nbsp;
+    <a href="https://en.wikipedia.org/wiki/Kraken" style="cursor:default">
+      <img src="../../../assets/logo.png" height="70" />
+    </a>
+    &nbsp;&nbsp; Kalendarium
+  </span>
   <span class="example-spacer"></span>
 
 
