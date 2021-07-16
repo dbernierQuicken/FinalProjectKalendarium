@@ -35,7 +35,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import { UpdateEventComponent } from './Components/update-event/update-event.component';
 import { FocResourcesComponent } from './Components/foc-resources/foc-resources.component';
-
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatListModule} from '@angular/material/list';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { FocResourcesComponent } from './Components/foc-resources/foc-resources.
     NewEventFormComponent,
     UpdateEventComponent,
     FooterComponent,
-    FocResourcesComponent
+    FocResourcesComponent,
+
 
 
 
@@ -83,6 +85,8 @@ import { FocResourcesComponent } from './Components/foc-resources/foc-resources.
     MatButtonModule,
     ScrollingModule,
     MatSortModule,
+    MatBottomSheetModule,
+    MatListModule,
     RouterModule.forRoot([
       { path: '', component: EventListComponent },
       { path: 'calendar/getCal', component: MonthComponent },
@@ -113,8 +117,8 @@ import { FocResourcesComponent } from './Components/foc-resources/foc-resources.
   ],
   providers: [KalendariumApiService, LoginService],
   bootstrap: [AppComponent],
-  entryComponents:[
-    FocResourcesComponent,
-  ]
+  entryComponents: [
+    FocResourcesComponent
+  ],
 })
 export class AppModule { }

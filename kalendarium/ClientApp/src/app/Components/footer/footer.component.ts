@@ -1,5 +1,7 @@
-﻿import { Component } from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
+﻿// import { FocResourcesComponent } from './../foc-resources/foc-resources.component';
+import { Component } from '@angular/core';
+import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
+
 
 @Component({
     selector: 'app-footer',
@@ -8,20 +10,25 @@ import {MatDialog} from '@angular/material/dialog';
 })
 
 export class FooterComponent {
-  constructor(public dialog: MatDialog) {}
+  constructor(private _bottomSheet: MatBottomSheet) {}
 
-  openDialog() {
-    this.dialog.open(FocResourcesComponent );
+  openBottomSheet(): void {
+    alert(FocResourcesComponent);
+    this._bottomSheet.open(FocResourcesComponent);
   }
 }
 @Component({
   selector: 'app-foc-resources',
   templateUrl: '../foc-resources/foc-resources.component.html',
-  styleUrls: ['../foc-resources/foc-resources.component.css']
+  // styleUrls: ['../foc-resources/foc-resources.component.css']
 })
 
 
 export class FocResourcesComponent{
-  constructor(){};
+  constructor(private _bottomSheetRef: MatBottomSheetRef<FocResourcesComponent>) {}
+  openLink(event: MouseEvent): void {
+    this._bottomSheetRef.dismiss();
+    event.preventDefault();
+  }
 }
 
