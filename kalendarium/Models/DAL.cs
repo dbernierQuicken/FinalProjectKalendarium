@@ -159,7 +159,7 @@ namespace kalendarium.Models
 
         public static List<Join> GetAllEventsWithLocation()
         {
-            return db.Query<Join>("SELECT event.*, location.city, location.state, location.street, location.zip FROM event Left JOIN location ON event.location_id=location.id").ToList();
+            return db.Query<Join>("SELECT event.*, location.city, location.state, location.street, location.zip FROM event Left JOIN location ON event.location_id=location.id where privateEvent = false").ToList();
         }
 
         public static Location AddLocation(string ccity, string sstate, string sstreet, string zzip)

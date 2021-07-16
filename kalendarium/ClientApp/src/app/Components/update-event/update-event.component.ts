@@ -14,7 +14,7 @@ export class UpdateEventComponent {
   
   eventslist = null;
   userslist = null;
-  @Input() event = '';
+  event = '';
   date = null;
   isPrivate: boolean = false;
   checked = false;
@@ -23,9 +23,19 @@ export class UpdateEventComponent {
   constructor(private eventservice: KalendariumApiService, private userService: LoginService, private route: Router) {
     this.eventslist = eventservice;
     this.userslist = userService;
+    this.setup();
+   
 
 
   }
+  setup() {
+
+    //this.date = this.eventservice.oneevent.dt_id;
+    //this.event = this.eventservice.oneevent.name;
+    //this.isPrivate = this.eventservice.oneevent.privateEvent;
+    console.log('another check', this.eventservice.oneevent);
+  }
+
 
   setAll() {
     this.checked = !this.checked;
