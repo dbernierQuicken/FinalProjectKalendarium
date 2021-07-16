@@ -19,19 +19,23 @@ export class LoginComponent {
   OnSubmit() {
     this.logService.getUserByEmail(this.emailaddress, userresult => {
       this.logService.userresult = userresult;
-      console.log(this.logService.userresult);
-      if (this.logService.userresult[0] != null) {
+      for (let i = 0; i < this.logService.userresult.length; i++) {
+        //console.log(this.logService.userresult[i]);
 
-        if (this.password == this.logService.userresult[0].password) {
-          this.logService.currentuser = this.logService.userresult[0];
-          console.log(this.logService.currentuser.firstName);
-          this.route.navigateByUrl('/user/usershowday');
+        if (this.logService.userresult[i].emailAddress == this.emailaddress) {
+
+          if (this.password == this.logService.userresult[i].password) {
+            this.logService.currentuser = this.logService.userresult[i];
+            console.log(this.logService.currentuser.firstName);
+            this.route.navigateByUrl('/user/usershowday');
+            return;
+          }
+
+        }
+
       }
-      else {
-          //DO THIS PART
-          alert('Wrong Credentials. Try again.')
-      }
-    }
+      alert('Wrong Credentials. Try Again.')
+
     });
   }
 }
