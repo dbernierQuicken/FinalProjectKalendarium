@@ -1,8 +1,45 @@
+.events-list-comp{
+  padding-top: 5rem;
+  max-height: 87.5vh;
+}
+
 table {
   width: 100%;
 }
 
 .mat-form-field {
-  font-size: 14px;
+  font-size: 20px;
   width: 100%;
+}
+
+.event-button{
+  /* background-color: blueviolet !important; */
+  /* line-height: 23px; */
+  padding: none;
+  font-weight: bolder;
+  font-size: 1rem;
+}
+
+.private-event{
+  font-weight: 600;
+}
+
+.date{
+  font-weight: 600;
+}
+th{
+  /*   position: sticky; */
+    background-color: #5866b1d2;
+    color: white;
+    font-size: 1.33rem;
+     font-weight: bolder;
+  }
+
+  .delete{
+    font-weight: bolder;
+    font-size: 1rem;
+  }
+.edit{
+  font-weight: bolder;
+  font-size: 1rem;
 }
