@@ -10,7 +10,7 @@ import { LoginService } from '../../Services/login.service';
   styleUrls: ['./event-detail.component.css']
 })
 export class EventDetailComponent {
-  displayedColumns: string[] = ['id', 'eventName', 'privateEvent', 'date', 'location','edit','delete'];
+  displayedColumns: string[] = [ 'eventName', 'privateEvent', 'date', 'location','edit','delete'];
 
   events = null;
   eventslist: KalendariumApiService = null;
