@@ -1,3 +1,20 @@
 ﻿a{
   text-decoration: none;
 }
+.bold-link{
+  position: absolute;
+  font-weight: 500;
+  font-size: 1rem;
+  top: .25rem;
+}
+
+.account-icon{
+  position: absolute;
+  font-size: 4rem;
+  right: 2.6rem;
+  top: 0.4rem;
+}
+
+mat-icon{
+  font-size: 2rem;
+}
