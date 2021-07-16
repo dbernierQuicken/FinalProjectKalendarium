@@ -3,26 +3,26 @@
 </ng-container>
 
 <button mat-icon-button [matMenuTriggerFor]="menu">
-  <mat-icon>account_circle</mat-icon>
+  <mat-icon class="account-icon">account_circle</mat-icon>
 </button>
 <mat-menu #menu="matMenu">
 
   <button mat-menu-item (click)="OnLogOut()">
     <mat-icon color="accent">logout</mat-icon>
-    <span>Logout</span>
+    <span class="bold-link">Logout</span>
   </button>
 
   <a routerLink="/user/login">
     <button mat-menu-item>
       <mat-icon color="accent">login</mat-icon>
-      <span>Login</span>
+      <span class="bold-link">Login</span>
     </button>
   </a>
 
   <a routerLink="/user/sign-up">
     <button mat-menu-item>
       <mat-icon color="accent">person_add</mat-icon>
-      <span>Sign up</span>
+      <span class="bold-link">Sign up</span>
     </button>
   </a>
 </mat-menu>
