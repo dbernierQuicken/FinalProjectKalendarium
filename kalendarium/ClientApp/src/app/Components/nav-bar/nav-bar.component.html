@@ -20,7 +20,7 @@
     </a>
 
     <!--Day Comp  -->
-    <a routerLink="/user/usershowday">
+    <a *ngIf="this.logService.currentuser!=null" routerLink="/user/usershowday">
       <button mat-menu-item>
         <mat-icon color="accent">calendar_today</mat-icon>
         <span>Today</span>

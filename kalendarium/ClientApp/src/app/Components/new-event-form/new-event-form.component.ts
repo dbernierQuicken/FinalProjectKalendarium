@@ -44,6 +44,7 @@ export class NewEventFormComponent implements OnInit {
   constructor(private eventservice: KalendariumApiService, private userService: LoginService, private route: Router) {
     this.eventslist = eventservice;
     this.userslist = userService;
+    this.date = this.eventservice.currentdate;
 
 
   }
