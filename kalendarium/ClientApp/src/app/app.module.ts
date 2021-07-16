@@ -4,9 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
 import { AppComponent } from './app.component';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule, MatCheckboxModule, MatDatepicker, MatDatepickerModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatSliderModule, MatTableModule, MatToolbarModule } from '@angular/material';
 import { EventListComponent } from './Components/event-list/event-list.component';
@@ -24,14 +22,12 @@ import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { LoginComponent } from './Components/login/login.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 import { NewEventFormComponent } from './Components/new-event-form/new-event-form.component'
-
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatSortModule} from '@angular/material/sort';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import {MatButtonModule} from '@angular/material/button';
 import { UpdateEventComponent } from './Components/update-event/update-event.component';
 import { FocResourcesComponent } from './Components/foc-resources/foc-resources.component';
@@ -59,8 +55,6 @@ import {MatListModule} from '@angular/material/list';
     UpdateEventComponent,
     FooterComponent,
     FocResourcesComponent,
-
-
 
 
   ],
@@ -98,6 +92,10 @@ import {MatListModule} from '@angular/material/list';
       { path: 'user/usershowday', component: DayComponent },
       { path: 'calendar/getCal', component: MonthComponent },
       { path: 'event/edit', component: UpdateEventComponent },
+      { path: 'event/details', component: EventDetailComponent },
+
+
+
 
 
 
@@ -110,8 +108,6 @@ import {MatListModule} from '@angular/material/list';
 
 
       { path: '**', component: PageNotFoundComponent },
-
-
     ]),
     BrowserAnimationsModule
   ],
